@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC 
+    "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+    "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="cnt_publico" template="/WEB-INF/templates/cntPublico.jsp">   
+        <put-attribute name="titulo" value="Decorakia" />
+         
+    </definition>   
+    <definition name="cnt_publicoIntranet" template="/WEB-INF/templates/cnt/cntPublicoIntranet.jsp">
+        <put-attribute name="titulo" value="Decorakia" />
+        
+    </definition>
+    <definition name="cnt_principalIntranet" template="/WEB-INF/templates/cnt/cntPrincipalIntranet.jsp">
+        <put-attribute name="titulo" value="Decorakia" />
+        <put-attribute name="menu1">
+            <definition template="/WEB-INF/templates/menus/MenuSup.jsp">
+                <put-attribute name="menuSuperior" value="/WEB-INF/templates/menus/submenus/adm/menuSuperior.jsp" />
+                <put-attribute name="menuLateralIzquierda" value="/WEB-INF/templates/menus/submenus/adm/menuLateralI.jsp" />
+                
+                
+            </definition>            
+        </put-attribute> 
+        <put-attribute name="menu2">
+            <definition template="/WEB-INF/templates/menus/MenuSup.jsp">
+                <put-attribute name="menuSuperior" value="/WEB-INF/templates/menus/submenus/sup/menuSuperior.jsp" />
+                <put-attribute name="menuLateralIzquierda" value="/WEB-INF/templates/menus/submenus/sup/menuLateralI.jsp" />
+                
+                
+            </definition>            
+        </put-attribute> 
+        <put-attribute name="menu3">
+            <definition template="/WEB-INF/templates/menus/MenuSup.jsp">
+                <put-attribute name="menuSuperior" value="/WEB-INF/templates/menus/submenus/emp/menuSuperior.jsp" />
+                <put-attribute name="menuLateralIzquierda" value="/WEB-INF/templates/menus/submenus/emp/menuLateralI.jsp" />
+                
+                
+            </definition>            
+        </put-attribute> 
+        <put-attribute name="menu4">
+            <definition template="/WEB-INF/templates/menus/MenuSup.jsp">
+                <put-attribute name="menuSuperior" value="/WEB-INF/templates/menus/submenus/pos/menuSuperior.jsp" />
+                <put-attribute name="menuLateralIzquierda" value="/WEB-INF/templates/menus/submenus/pos/menuLateralI.jsp" />
+                
+                
+            </definition>            
+        </put-attribute> 
+        <put-attribute name="menu5">
+            <definition template="/WEB-INF/templates/menus/MenuSup.jsp">
+                <put-attribute name="menuSuperior" value="/WEB-INF/templates/menus/submenus/cli/menuSuperior.jsp" />
+                <put-attribute name="menuLateralIzquierda" value="/WEB-INF/templates/menus/submenus/cli/menuLateralI.jsp" />
+                
+                
+            </definition>            
+        </put-attribute> 
+        <put-attribute name="menu6">
+            <definition template="/WEB-INF/templates/menus/MenuSup.jsp">
+                <put-attribute name="menuSuperior" value="/WEB-INF/templates/menus/submenus/prov/menuSuperior.jsp" />
+                <put-attribute name="menuLateralIzquierda" value="/WEB-INF/templates/menus/submenus/prov/menuLateralI.jsp" />
+                
+                
+            </definition>            
+        </put-attribute> 
+    </definition>
+    
+    
+    <definition name="cnt_principal" template="/WEB-INF/templates/cntPrincipal.jsp">
+        <put-attribute name="titulo" value="Decorakia" />
+        <put-attribute name="menu1">
+            <definition template="/WEB-INF/templates/MenuAdm.jsp">
+                <put-attribute name="report1" value="/WEB-INF/templates/EmpCol1.jsp" />
+                <put-attribute name="report2" value="/WEB-INF/templates/EmpCol3.jsp" />
+                
+            </definition>            
+        </put-attribute>  
+        <put-attribute name="menu2">
+            <definition template="/WEB-INF/templates/MenuSup.jsp">
+                <put-attribute name="report1" value="/WEB-INF/templates/EmpCol1.jsp" />
+                <put-attribute name="report2" value="/WEB-INF/templates/EmpCol3.jsp" />
+            </definition>            
+        </put-attribute> 
+        <put-attribute name="menu3">
+            <definition template="/WEB-INF/templates/MenuEmp.jsp">
+                <put-attribute name="report1" value="/WEB-INF/templates/EmpleadoCol1.jsp" />
+                <put-attribute name="report2" value="/WEB-INF/templates/EmpleadoCol3.jsp" />
+            </definition>
+        </put-attribute>
+        <put-attribute name="menu4">
+            <definition template="/WEB-INF/templates/MenuPos.jsp">
+                <put-attribute name="report1" value="/WEB-INF/templates/PosCol1.jsp" />
+                <put-attribute name="report2" value="/WEB-INF/templates/PosCol3.jsp" />
+            </definition>
+        </put-attribute>
+        <put-attribute name="menu5">
+            <definition template="/WEB-INF/templates/MenuCli.jsp">
+                <put-attribute name="report1" value="/WEB-INF/templates/CliCol1.jsp" />
+                <put-attribute name="report2" value="/WEB-INF/templates/CliCol3.jsp" />
+            </definition>
+        </put-attribute>
+    </definition>
+    <definition name="cnt_principal2" template="/WEB-INF/templates/cntPrincipal2.jsp">
+        <put-attribute name="titulo" value="Decorakia" />
+        <put-attribute name="menu1" >
+            <definition template="/WEB-INF/templates/MenuAdm.jsp">
+                <put-attribute name="report1" value="/WEB-INF/templates/EmpCol1.jsp" />
+                <put-attribute name="report2" value="/WEB-INF/templates/EmpCol3.jsp" />
+            </definition>            
+        </put-attribute>  
+        <put-attribute name="menu2">
+            <definition template="/WEB-INF/templates/MenuSup.jsp">
+                <put-attribute name="report1" value="/WEB-INF/templates/EmpCol1.jsp" />
+                <put-attribute name="report2" value="/WEB-INF/templates/EmpCol3.jsp" />
+            </definition>            
+        </put-attribute> 
+        <put-attribute name="menu3">
+            <definition template="/WEB-INF/templates/MenuEmp.jsp">
+                <put-attribute name="report1" value="/WEB-INF/templates/EmpleadoCol1.jsp" />
+                <put-attribute name="report2" value="/WEB-INF/templates/EmpleadoCol3.jsp" />
+            </definition>
+        </put-attribute>
+        <put-attribute name="menu4">
+            <definition template="/WEB-INF/templates/MenuPos.jsp">
+                <put-attribute name="report1" value="/WEB-INF/templates/PosCol1.jsp" />
+                <put-attribute name="report2" value="/WEB-INF/templates/PosCol3.jsp" />
+            </definition>
+        </put-attribute>
+        <put-attribute name="menu5">
+            <definition template="/WEB-INF/templates/MenuCli.jsp">
+                <put-attribute name="report1" value="/WEB-INF/templates/CliCol1.jsp" />
+                <put-attribute name="report2" value="/WEB-INF/templates/CliCol3.jsp" />
+            </definition>
+        </put-attribute>
+    </definition>
+    <definition name="cnt_principal3" template="/WEB-INF/templates/cntPrincipal3.jsp">
+        <put-attribute name="titulo" value="Decorakia" />
+         
+    </definition>
+    <definition name="cnt_reportes" template="/WEB-INF/templates/cntReportes.jsp">
+        <put-attribute name="header">
+            <definition template="/WEB-INF/templates/header.jsp">
+            </definition>
+        </put-attribute> 
+    </definition>
+    
+</tiles-definitions>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subtotal" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e160f1bc-8632-4bfd-8ff0-f50e05d480b3">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="conexion intranet"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idpropuesta" class="java.lang.Integer"/>
+	<parameter name="idcapitulo" class="java.lang.Integer"/>
+	<parameter name="des" class="java.lang.Float">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT ''||trunc(CAST ((sum(p.monto)-(sum(p.monto)*$P{des}))AS numeric),2)as sum
+FROM presupuesto p INNER JOIN subcapitulos sc on(p.subcapitulo_id=sc.id) INNER JOIN presupuestoc pre on(p.presup_id=pre.id)
+where pre.propuesta_id= $P{idpropuesta} and pre.capitulo_id=  $P{idcapitulo} 
+group by pre.capitulo_id]]>
+	</queryString>
+	<field name="sum" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="3" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="bdc2e2dc-0dbf-4a83-8fe4-3be6483405cc" x="338" y="-19" width="41" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="1171baf9-6ead-4683-b0da-d68cf5239f38" x="430" y="-19" width="141" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sum}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement uuid="361dc255-b234-4b53-9301-d6189b12d381" x="416" y="-17" width="14" height="20"/>
+				<imageExpression><![CDATA["C:\\DecorakiaReportesIntranet\\euro.png"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subsubreporte" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6fafeecd-fdc2-4732-be4f-73643ff06afb">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="conexion intranet"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idpresupuesto" class="java.lang.Integer"/>
+	<parameter name="idsubpro" class="java.lang.Integer"/>
+	<parameter name="idsubcapi" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select * from ((SELECT p.id, p.presupuesto_id, p.estancia_id, prepanos.idpano,sc.largo,prepanos.largopresupuesto as alto,round((prepanos.largopresupuesto*sc.largo),2) as superficie,tipe.nombre,est.numero as num
+FROM presupuesto_superficies_panos prepanos  
+INNER JOIN presupuesto_superficies p on(prepanos.idpresup_sup=p.id) 
+inner join presupuesto pres on (p.presupuesto_id=pres.id) 
+inner join presupuestoc prec on(pres.presup_id=prec.id) 
+INNER JOIN panos sc on(prepanos.idpano=sc.id) 
+inner join estancias est on(p.estancia_id=est.id) 
+inner join tipo_estancia tipe on(est.tipo_estancia_id=tipe.id)
+where prec.capitulo_id not in(30,31) and p.presupuesto_id= $P{idpresupuesto})
+union
+(SELECT p.id, p.presupuesto_id, p.estancia_id, prepanos.idpano,v.largo ,v.alto,v.superficie,tipe.nombre||': ventana '||v.num as nombre,v.num
+FROM presupuesto_superficies_panos_vpa vpa
+inner join presupuesto_superficies_panos prepanos on(vpa.idpresup_sup_pano=prepanos.id) 
+INNER JOIN presupuesto_superficies p on(prepanos.idpresup_sup=p.id) 
+inner join presupuesto pres on (p.presupuesto_id=pres.id) 
+inner join presupuestoc prec on(pres.presup_id=prec.id) 
+INNER JOIN ventanas v on(vpa.idpva=v.id)
+inner join estancias est on(p.estancia_id=est.id) 
+inner join tipo_estancia tipe on(est.tipo_estancia_id=tipe.id)
+where prec.capitulo_id in(30,31) and p.presupuesto_id=  $P{idpresupuesto}
+order by v.num asc)
+union
+(SELECT p.id, p.presupuesto_id, p.estancia_id, prepanos.idpano,v.largo ,v.alto,v.superficie,tipe.nombre||': puerta '||v.num as nombre,v.num
+FROM presupuesto_superficies_panos_vpa vpa
+inner join presupuesto_superficies_panos prepanos on(vpa.idpresup_sup_pano=prepanos.id) 
+INNER JOIN presupuesto_superficies p on(prepanos.idpresup_sup=p.id) 
+inner join presupuesto pres on (p.presupuesto_id=pres.id) 
+inner join presupuestoc prec on(pres.presup_id=prec.id) 
+INNER JOIN puertas v on(vpa.idpuerta=v.id)
+inner join estancias est on(p.estancia_id=est.id) 
+inner join tipo_estancia tipe on(est.tipo_estancia_id=tipe.id)
+where prec.capitulo_id in(30,31) and p.presupuesto_id=  $P{idpresupuesto}
+order by v.num asc)
+union
+(SELECT p.id, p.presupuesto_id, p.estancia_id, prepanos.idpano,v.largo ,v.alto,v.superficie,tipe.nombre||': puerta '||v.num as nombre,v.num
+FROM presupuesto_superficies_panos_vpa vpa
+inner join presupuesto_superficies_panos prepanos on(vpa.idpresup_sup_pano=prepanos.id) 
+INNER JOIN presupuesto_superficies p on(prepanos.idpresup_sup=p.id) 
+inner join presupuesto pres on (p.presupuesto_id=pres.id) 
+inner join presupuestoc prec on(pres.presup_id=prec.id) 
+INNER JOIN armarios v on(vpa.idarmario=v.id)
+inner join estancias est on(p.estancia_id=est.id) 
+inner join tipo_estancia tipe on(est.tipo_estancia_id=tipe.id)
+where prec.capitulo_id in(30,31) and p.presupuesto_id=  $P{idpresupuesto}
+order by v.num asc)) as d order by estancia_id,nombre asc]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="presupuesto_id" class="java.lang.Integer"/>
+	<field name="estancia_id" class="java.lang.Integer"/>
+	<field name="idpano" class="java.lang.Integer"/>
+	<field name="largo" class="java.math.BigDecimal"/>
+	<field name="alto" class="java.math.BigDecimal"/>
+	<field name="superficie" class="java.math.BigDecimal"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="num" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<textField>
+				<reportElement uuid="d2f87857-cd47-4a6f-94dd-125f67aad138" x="186" y="-7" width="57" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{largo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d9e3380f-23c3-479a-861f-b32a16977f1f" x="298" y="-6" width="43" height="19"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{alto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0b43133b-e9a1-44e7-b49d-f2e568710e97" x="341" y="-7" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{superficie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bd7ea7a1-ad80-4d98-8fa6-aceed944227f" x="33" y="-6" width="142" height="19"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4cb70f47-7367-455f-9ebd-e907392c9e5d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="nif" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT g.id,g.nif_user,e.apellidos||', '||e.nombre as nombres,g.direccion,g.lat,g.longi,g.fecha,g.hora,g.turno FROM gps g inner join empleados e on(g.nif_user=e.nif) WHERE g.nif_user=$P{nif} and g.fecha=$P{fecha}
+order by g.hora asc]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="nif_user" class="java.lang.String"/>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="lat" class="java.lang.String"/>
+	<field name="longi" class="java.lang.String"/>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="hora" class="java.lang.String"/>
+	<field name="turno" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="118" splitType="Stretch">
+			<image>
+				<reportElement uuid="7bfd38a9-5162-4a85-a0ed-244058ea7aef" x="402" y="-4" width="209" height="58"/>
+				<imageExpression><![CDATA["C:\\logonomina.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="77ab84cd-b403-4ae7-b51d-395ead15f51b" x="187" y="16" width="174" height="20"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Decorakia GPS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b92bcec2-3b4b-4c13-9223-ac7ca77f5a37" x="20" y="48" width="64" height="21"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMPLEADO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="eb5d2d0f-c66b-4bf7-b681-3dce8f1948a3" x="87" y="49" width="158" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nif_user}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7ddf55cc-659c-4797-80ef-a6cda65237a4" x="88" y="67" width="273" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="982c3f85-8970-4bc0-b068-b2c6b03d27ae" x="402" y="48" width="38" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[del Dia:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e3de9d1e-24c7-4344-a31f-fa57daaf99de" x="446" y="48" width="109" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2b32c021-aaeb-4b0c-8bd0-ac4c2e9834cc" x="20" y="98" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0910f7c6-fa3d-4b2a-b1ea-56f7ad4366d4" x="482" y="98" width="72" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TURNO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6677e124-7a88-44e7-8f06-75de7b50ac45" x="403" y="98" width="62" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement uuid="72993388-3111-4dab-9679-4425d97f0bdf" x="20" y="6" width="364" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="843a411f-e148-42f2-98c8-5103820313e4" x="403" y="6" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="47cbf021-3c23-4ff0-96a4-517e1aa1abe8" x="482" y="6" width="72" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{turno}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

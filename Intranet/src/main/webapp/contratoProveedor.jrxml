@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1dc3d92d-e906-4684-ada7-bbeda38b81fc">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idP" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select to_char(fechacontrato, 'dd Mon yyyy') as fechaContrato,persona_contacto||' mayor de edad, ' as contacto,direccion||' y provista de CIF/NIF '||cif as direccion from proveedores where id=$P{idP}]]>
+	</queryString>
+	<field name="fechacontrato" class="java.lang.String"/>
+	<field name="contacto" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<image>
+				<reportElement uuid="7bfd38a9-5162-4a85-a0ed-244058ea7aef" x="410" y="12" width="209" height="58"/>
+				<imageExpression><![CDATA["C:\\logonomina.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="ba3fb995-8372-47d6-8e8f-e81370f30cff" x="21" y="30" width="68" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[En Madrid,  a ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="aef98d71-c824-4624-83e6-441a039d8dea" x="8" y="70" width="547" height="15"/>
+				<textElement/>
+				<text><![CDATA[R E U N I D O S.-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="eb462687-5fd8-46d9-a8bd-76dd95685423" x="8" y="90" width="547" height="42"/>
+				<textElement/>
+				<text><![CDATA[DE UNA PARTE, Don Jonatan Fajardo Ruano, mayor de edad, con domicilio en Avenida de la Fuente Nueva 12. Edificio Monterrey - Portal izdo. San Sebastián de los Reyes 28703. y provisto del Documento Nacional de identidad n2 53005868E.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a5128e9e-24cf-42bb-9f0d-afc10da0d64a" x="8" y="140" width="549" height="29"/>
+				<textElement/>
+				<text><![CDATA[En nombre y representación de la Sociedad DECORAKIA PROYECTOS SL con domicilio en Avenida de la Fuente Nueva 12. Edificio Monterrey - Portal izdo. San Sebastián de los Reyes 28703.y provista del CIF B12935466. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bbe33415-fd67-41cd-895e-74487efc1210" x="8" y="180" width="123" height="15"/>
+				<textElement/>
+				<text><![CDATA[Y DE OTRA PARTE, DON ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bc02afbf-4706-4501-8ae6-f81ccc237da6" x="8" y="195" width="262" height="17"/>
+				<textElement/>
+				<text><![CDATA[en nombre y representación de EMPRESA con domicilio]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ab6954b2-37bf-46e7-998c-3b25fcb5a07e" x="131" y="180" width="424" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{contacto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b96713b5-b6eb-428d-a12a-17c6c026f20a" x="270" y="195" width="274" height="17"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="466931cf-0e31-42be-96f9-4e5abc2c6fe1" x="8" y="224" width="547" height="20"/>
+				<textElement/>
+				<text><![CDATA[Ambas partes se reconocen  capacidad  legal suficiente  para suscribir  el presente documento  a cuyo  fin,
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="56792b07-6cea-4b4e-a9f7-186ddf8b7150" x="8" y="258" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[E X P O N E N.-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2cef49f1-271a-4171-8dda-b315c6063b3e" x="8" y="288" width="547" height="70"/>
+				<textElement/>
+				<text><![CDATA[Ambas partes se proponen colaborar o colaboran de hecho desde el día FECHA, en proyectos de rehabilitación, reparación y reformas de viviendas y oficinas. Teniendo  EMPRESA   (Administradores y empleados de la sociedad)  información de carácter confidencial para DECORAKIA PROYECTOS SL).De diferentes cuestiones relacionadas con clientes, proveedores, entidades financieras y cualquier entidad objeto y vinculada a la actividad propia descrita.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="55735719-ed8a-4c07-a8f8-f1c586ac25cb" x="8" y="358" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[ACUERDAN.-
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="280898bc-53ed-4e23-849e-e3a91493ce78" x="8" y="397" width="536" height="53"/>
+				<textElement/>
+				<text><![CDATA[Los trabajos efectuados por el COLABORADOR serán abonados en los plazos y formas pactadas en el encargo. En cualquier caso el desembolso del trabajo está condicionado a la satisfacción y calidad del mismo tanto para la EMPRESA como para el CLIENTE FINAL /PROPIEDAD del mismo que tendrá que dar conformidad expresa mediante firma de certificación de obra donde se incluyan los mencionados trabajos.
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dd0d8a59-c935-4e40-ba55-ceaba533b900" x="8" y="452" width="216" height="20"/>
+				<textElement/>
+				<text><![CDATA[Serán por cuenta del COLABORADOR:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5d7d0dd7-bb33-4872-91d3-5f6f5230bd20" x="8" y="378" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Forma de Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4217c781-d274-465a-b8fb-54d1aa8415a8" x="8" y="482" width="536" height="44"/>
+				<textElement/>
+				<text><![CDATA[a)	Suministrar la mano de obra necesaria, ya sea auxiliar o especializada, para la realización de los trabajos encargados, siendo de su cuenta el pago de los salarios, transportes y cualesquiera  otras cargas sociales.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7a84bf45-a359-4d09-bc18-80801cf25d73" x="8" y="540" width="536" height="56"/>
+				<textElement/>
+				<text><![CDATA[b)	Cumplir  con  todas  las  obligaciones  de  carácter  laboral  que  impone  la  Ley,  y  especialmente  las  de  prevención  de  riesgos   laborales. Para lo cual LA EMPRESA podrá  reclamar la documentación necesaria a efectos de comprobar las mismas. La documentación deberá ser presentada por el COLABORADOR en un plazo máximo de 48h después de su solicitud par parte de la CONTRATA.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="310265d6-11a1-4d10-a934-3bc0d1d88988" x="8" y="607" width="536" height="29"/>
+				<textElement/>
+				<text><![CDATA[c) Suministrar toda la maquinaria, accesorios, utillaje de todo tipo, y todos las materiales necesarios para la ejecución  de los  trabajos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7ae6430b-32a7-4dd2-8f87-097ae7242552" x="8" y="647" width="536" height="20"/>
+				<textElement/>
+				<text><![CDATA[d)	Ejecutar las trabajos encargados en el plazo previsto.
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="adf35dea-38f0-45dc-8ad8-6bb97e59217f" x="89" y="30" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fechacontrato}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="802">
+			<staticText>
+				<reportElement uuid="679af3c4-ba39-45a4-8ffc-2ad2abe01ca9" x="8" y="94" width="536" height="36"/>
+				<textElement/>
+				<text><![CDATA[Asimismo, el COLABORADOR  responderá  de  cuantos  daños  o  perjuicios  pudieran  irrogarse  por  motive  de  su actividad.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8f4f945f-9cc1-4946-893b-4ccdd8e6e4aa" x="8" y="130" width="536" height="116"/>
+				<textElement/>
+				<text><![CDATA[La Empresa subcontratista se obliga a suscribir un seguro de cobertura de responsabilidad civil, para responder de cuantos daños y perjuicios se ocasionaren,  coma  consecuencia  de  su actividad,  a  las vecinos  de  la  comunidad,  propietarios de edificios  colindantes o transeúntes, exonerándose la contrata de toda responsabilidad  que  por  accidentes  laborales  o  de  otra  índole  pudieran  ocasionarse por los trabajadores pertenecientes a la empresa subcontratista. Para lo cual la EMPRESA podrá reclamar la documentación  necesaria a efectos de comprobar  las mismas. La documentación  deberá  ser  presentada por el COLABORADOR  en un plazo máximo de 48h después de su solicitud par parte de la EMPRESA. De la misma forma la EMPRESA podrá obligar a la contratación  de tal seguro  si se considerada  el  riesgo  no cubierto  o  cubierto  insatisfactoriamente.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f91d5e7b-c3ff-4b4f-8ae6-87589786d6e9" x="8" y="256" width="536" height="59"/>
+				<textElement/>
+				<text><![CDATA[e)	El COLABORADOR se compromete a comunicar a la EMPRESA  cualquier  comunicación  que  les  haga  llegar  directamente  la  propiedad y será siempre la EMPRESA quien presupueste las trabajos a ejecutar. En ningún caso EL COLABORADOR será interlocutor de la PROPIEDAD.  Ni podrá litigar o comentar acerca  de las trabajos  realizados.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ca975435-723e-4c22-bf9c-216f0ce342a7" x="8" y="329" width="536" height="75"/>
+				<textElement/>
+				<text><![CDATA[f) Cadena de ulteriores subcontratas.- El COLABORADOR  podrá subcontratar a su vez la ejecución de las trabajos encomendados, con las limitaciones establecidas en el artículo S de la Ley 32/2006, de 18 de octubre. A estos efectos, la empresa subcontratista, deberá  informar, en  su case, de  la sucesiva  subcontrata  que  pudiera  realizarse, acreditando  documentalmente que la segunda subcontratista cumple con las requisitos establecidos en la  Ley  32/2006,  para  intervenir  en  el  proceso  de  subcontratación.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6f217333-ad09-48e7-a1e5-e9b32226a271" x="8" y="415" width="536" height="37"/>
+				<textElement/>
+				<text><![CDATA[Resolución del contrato.- La EMPRESA podrá resolver de  pleno derecho  el presente contrato  en las siguientes casos:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="93eced38-6c36-4975-a989-b6ad68dbec00" x="8" y="464" width="536" height="45"/>
+				<textElement/>
+				<text><![CDATA[a)	El incumplimiento de las obligaciones de acreditación y registro exigidas en el artículo 4.2 de la Ley 32/2006, y el régimen de la subcontratación regulada en el artículo S del mismo Texto Legal (ampliación de la cadena de subcontratación fuera de las supuestos previstos en la Ley).
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ffb0150f-4f97-46ba-bf02-c2f0b4a95a77" x="8" y="517" width="536" height="20"/>
+				<textElement/>
+				<text><![CDATA[b)	Por un retraso en el plaza de la ejecución de los trabajos pactados de más de 30 días.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ea45f78f-7de4-44dc-af3f-f1fd537871eb" x="8" y="544" width="536" height="20"/>
+				<textElement/>
+				<text><![CDATA[c)	Por negligencia  o mala fe en la ejecución de los trabajos encomendados.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cfa10711-f47a-43fd-a5ce-8d000e6168f3" x="8" y="575" width="536" height="34"/>
+				<textElement/>
+				<text><![CDATA[d)	Par paralización en la realización de los trabajos encomendados, sin causa justificada por un periodo  superior  a  5  días, liquidándose  en este caso  los trabajos ya  realizados.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a3ee213c-7f0c-45a3-bd7d-eb426b713eba" x="8" y="620" width="532" height="20"/>
+				<textElement/>
+				<text><![CDATA[CLAUSULA  DE NO CONCURRENCIA  Y CONFIDENCIALIDAD:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="53618d5f-7c09-4986-a886-c2e841c99be1" x="8" y="647" width="536" height="20"/>
+				<textElement/>
+				<text><![CDATA[El colaborador durante el plazo de 5 años, desde la firma del presente documento se obliga a:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ac9e157b-7b68-473d-b790-51f4c91d40a2" x="8" y="677" width="536" height="41"/>
+				<textElement/>
+				<text><![CDATA[No contratar o contactar por motivos profesionales ni en beneficio suyo ni en el de terceros con clientes, personal que  hayan contratado o prestado sus servicios previamente con empresas administrada s por Jonatan Fajardo Ruano concretamente  DECORAKIA PROYECTOS SL
+]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="7bfd38a9-5162-4a85-a0ed-244058ea7aef" x="420" y="22" width="209" height="58"/>
+				<imageExpression><![CDATA["C:\\logonomina.png"]]></imageExpression>
+			</image>
+		</band>
+		<band height="802">
+			<staticText>
+				<reportElement uuid="0e4f5781-0681-4a6a-9cea-8c870874fd4d" x="8" y="107" width="536" height="28"/>
+				<textElement/>
+				<text><![CDATA[No prestar sus servicios a clientes de las empresas  arriba  mencionadas  sin consentimiento  de D Jonatan  Fajardo Ruano.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b5ac5ce4-6a12-441f-913f-37d44c81d4fa" x="8" y="146" width="532" height="86"/>
+				<textElement/>
+				<text><![CDATA[El COLABORADOR el reconoce el KNOW HOW("Saber- Como") de las empresas administradas por D. Jonatan Fajardo Ruano y se obliga a guardar  el secreto y  la confidencialidad  de toda  la información  de la que haya tenido  acceso  durante  la vigencia  del contrato de colaboración, especialmente la información relativa a sus protocolos de trabajo , relaciones con sus los proveedores, documentación propia ,información jurídica, proyectos futuros o cualquier  otra  información  sensible  o  propia  de  la empresa  o vinculada  a la actividad  de  la misma.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="af497386-577b-4299-b5d1-f8aeffdff135" x="8" y="241" width="532" height="44"/>
+				<textElement/>
+				<text><![CDATA[El COLABORADOR no podrá aprovechar en su beneficio ni en el de terceros ningún tipo de información o contactos a los que haya tenido  acceso  por mediación de las empresas de  D. Jonatan  Fajardo Ruano   sin consentimiento  de este.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cf03d90a-61e1-496b-ae18-baf4373c59b7" x="8" y="297" width="532" height="28"/>
+				<textElement/>
+				<text><![CDATA[El COLABORADOR será responsable de todos los daños y perjuicios que para DECORAKIA PROYECTOS SL  se deriven como consecuencia  del  incumplimiento  de  dicha  obligación.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ff6e5293-1665-41e9-990a-c54b6082e546" x="8" y="336" width="532" height="75"/>
+				<textElement/>
+				<text><![CDATA[Independientemente de las responsabilidades que pudieran derivarse del incumplimiento del presente acuerdo, así como las eventuales indemnizaciones por daños y perjuicios de cualquier naturaleza que pudieran establecerse, el incumplimiento de estas obligaciones determinará la extinción de forma procedente el contrato suscrito entre ambas partes  así como el abono por parte del COLABORADOR de 50000€ en concepto de penalización.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="53728421-04ea-42e4-85ef-f495656961b1" x="8" y="411" width="532" height="20"/>
+				<textElement/>
+				<text><![CDATA[Esta cláusula estará en vigor durante el plazo de CINCO ANOS desde la firma del presente contrato.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d7885fb5-042a-4fb1-af9b-7ddbcb1bed90" x="8" y="434" width="525" height="14"/>
+				<textElement/>
+				<text><![CDATA[CLAUSULA CUMPLIMENTO NORMATIVO Y PREVENCION DE RIESGOS
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="773ce399-15d8-422d-b058-0056cd334755" x="9" y="458" width="234" height="20"/>
+				<textElement/>
+				<text><![CDATA[En cumplimiento de la siguiente normativa:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bcf38931-f70e-4c0e-b565-384ebc1853b7" x="9" y="491" width="531" height="29"/>
+				<textElement/>
+				<text><![CDATA[•	Ley 31/1995. Ley de Prevenci6n de Riesgos Laborales de 8 de noviembre de 1995. Artículo 15: Principios de la actividad preventiva.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f68d2d9f-33a4-45ce-bd37-3fa197e61e7f" x="9" y="529" width="531" height="15"/>
+				<textElement/>
+				<text><![CDATA[Artículo 24: Coordinaci6n de actividades empresariales.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f68d2d9f-33a4-45ce-bd37-3fa197e61e7f" x="8" y="548" width="531" height="15"/>
+				<textElement/>
+				<text><![CDATA[Artículo 42: Responsabilidades y su compatibilidad. Artículo 47: infracciones graves.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="70d208cc-be65-499c-9b05-661f917624e3" x="8" y="577" width="531" height="35"/>
+				<textElement/>
+				<text><![CDATA[•	Ley 54/2003, de 12 de diciembre, de reforma del marco normativo de la prevenci6n de riesgos laborales. Artículo Tercero.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3b841757-f3ae-437c-a838-6ce5e732bef7" x="9" y="622" width="531" height="57"/>
+				<textElement/>
+				<text><![CDATA[•	Real Decreto 171/2004, de 30 de enero, por el que se desarrolla el artículo 24 de la Ley 31/ 1995, de 8 de noviembre, de Prevenci6n de Riesgos Laborales, en materia de coordinaci6n de actividades empresariales. En todos sus artículos.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a9a914eb-a3b3-4b87-bd0e-c3b68d655b1b" x="9" y="690" width="531" height="28"/>
+				<textElement/>
+				<text><![CDATA[•	Estatuto de los trabajadores:  Art . 42 , Responsabilidad empresarial en caso de subcontrata de obras o servicios.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9b515d1a-997d-4e51-8be5-91c902772bf8" x="9" y="727" width="530" height="16"/>
+				<textElement/>
+				<text><![CDATA[•	Ley de infracciones y sanciones en el orden social: Art. 40, responsabilidad empresarial.]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="7bfd38a9-5162-4a85-a0ed-244058ea7aef" x="420" y="22" width="209" height="58"/>
+				<imageExpression><![CDATA["C:\\logonomina.png"]]></imageExpression>
+			</image>
+		</band>
+		<band height="754">
+			<staticText>
+				<reportElement uuid="8d32f0c7-935d-4878-aee0-3685f06343e0" x="14" y="106" width="530" height="75"/>
+				<textElement/>
+				<text><![CDATA[DECORAKIA PROYECTOS SL tiene el deber de garantizar las condiciones de seguridad y salud de los trabajadores que realicen alguna actividad en nuestros centros de trabajo. Para ello, debemos confirmar que su empresa cumple con las propias obligaciones establecidas en la Ley de Prevención. Para ello, debemos hacerle señalar las condiciones bajo las cuales deberá realizar su actividad en nuestra empresa, que son las siguientes:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4ae5586f-c20a-4de6-ba5f-4bbe724423f6" x="14" y="196" width="530" height="89"/>
+				<textElement/>
+				<text><![CDATA[1) Su empresa, contratada por DECORAKIA PROYECTOS SL., y su personal son responsables de la adopción y cumplimiento de todas las disposiciones legales, vigentes en materia de prevención de riesgos laborales. Durante el tiempo de realización de las actividades contratadas en los locales DECORAKIA PROYECTOS SL., la Dirección de la empresa contratada se responsabilizara de la puesta en práctica de las mismas, así como de las consecuencias que se deriven de su incumplimiento, tanto en lo que se refiere a la actividad por ella realizada , como a las que, a su vez, pudiera subcontratar con terceros .]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4af3dc4c-d8b4-4739-9e64-6d30b9b8630e" x="14" y="298" width="530" height="26"/>
+				<textElement/>
+				<text><![CDATA[Constatar que no podrán hacer subcontrataciones a terceros sin la autorización previa de DECO. DECORAKIA PROYECTOS SL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2cced77a-0a27-468c-87f7-e6d637950beb" x="14" y="335" width="530" height="43"/>
+				<textElement/>
+				<text><![CDATA[2)	A tal efecto, antes de iniciar los trabajos objeto de la contrataci6n , su empresa deberá estar al corriente de sus obligaciones, según lo exigido por la Ley de Prevención de Riesgos Laborales, Reglamento de los Servicios de Prevención y demás Reglamentos particulares relacionados con la Prevención.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c796db68-19f9-40de-84c5-a3828d768856" x="14" y="388" width="530" height="30"/>
+				<textElement/>
+				<text><![CDATA[3)	Para poder acreditar lo anteriormente expuesto, la empresa contratada deberá presentar, en los plazos señalados, la siguiente documentación:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="348377f0-306e-4242-b0f2-89a36b248ac7" x="14" y="430" width="530" height="30"/>
+				<textElement/>
+				<text><![CDATA[Certificado conforme cuenta con un MODELO ORGANIZATIVO para el desarrollo de la prevenci6n, la seguridad y la salud laboral de sus trabajadores.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0f934029-bef4-4ffa-865d-8c12c9bd1397" x="14" y="472" width="530" height="96"/>
+				<textElement/>
+				<text><![CDATA[Evaluación de riesgos y plan de medidas preventivas de los trabajos a realizar en DECORAKIA PROYECTOS SL. Listado de trabajadores que van a desarrollar su trabajo en DECORAKIA PROYECTOS SL. Certificados médicos según el cual los trabajadores que participen en los trabajos en DECORAKIA PROYECTOS SL. Son APTOS  para la realización de los mismos. Certificado conforme los trabajadores que van a participar en los trabajos a desarrollar en DECORAKIA PROYECTOS SL, han recibido formación de prevención específica para ese tipo de trabajo Certificado de Profesionalidad de los trabajadores que van a participar en los trabajos , en caso necesario por existencia de norma reglamentaria. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="93d73b12-e2f7-452f-a7c7-c65039df7c15" x="14" y="575" width="527" height="14"/>
+				<textElement/>
+				<text><![CDATA[Otros: DNI., TC1. TC2 o Carta de Alta a la Seguridad Social.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2b760b06-3334-49ab-aa36-e2ffbfcd8bb3" x="14" y="600" width="530" height="19"/>
+				<textElement/>
+				<text><![CDATA[Copia de la póliza de seguro de responsabilidad civil.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5abf09c6-6074-4f9f-aab4-9db562f46399" x="14" y="629" width="527" height="47"/>
+				<textElement/>
+				<text><![CDATA[4)	DECORAKIA PROYECTOS SL. no aceptara reclamación alguna de la empresa contratada por pérdidas de tiempo debidas a interrupciones del trabajo motivadas por el incumplimiento , por parte de su personal, de las obligaciones legales en materia de prevenci6n de riesgos laborales.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ed112373-97d3-4014-ba1d-138937d27d7c" x="13" y="682" width="528" height="34"/>
+				<textElement/>
+				<text><![CDATA[5)	La empresa contratada se compromete a la correcta utilización y conservación, por parte de su personal, de las instalaciones del centro de trabajo .]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="7bfd38a9-5162-4a85-a0ed-244058ea7aef" x="420" y="22" width="209" height="58"/>
+				<imageExpression><![CDATA["C:\\logonomina.png"]]></imageExpression>
+			</image>
+		</band>
+		<band height="753">
+			<staticText>
+				<reportElement uuid="f58f8e34-cb86-43f6-95f1-d06b14c94e46" x="14" y="116" width="530" height="55"/>
+				<textElement/>
+				<text><![CDATA[6)	En el caso de que a DECORAKIA PROYECTOS SL. Le fuera impuesta alguna sanción por parte de la autoridad competente, como consecuencia del incumplimiento de medidas preventivas por parte del personal de la empresa contratada, DECORAKIA PROYECTOS SL. repercutirá y deducirá dichas cantidades de las facturas que deba abonar a la empresa contratada.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6c8e590a-f59f-4068-a03f-33478cecdfab" x="14" y="183" width="530" height="76"/>
+				<textElement/>
+				<text><![CDATA[7)	independientemente de lo establecido en el párrafo anterior , en el caso de incumplimiento de medidas de prevención por parte de la empresa contratada, DECORAKIA PROYECTOS SL. queda facultada para paralizar los trabajos que se estén realizando, en tanto no sean corregidas las deficiencias detectadas , pudiendo reclamar a la empresa contratada los daños y perjuicios que de ello puedan derivarse . Además , DECORAKIA PROYECTOS SL. podrá retener los pagos y las certificaciones en curso, así como resolver el contrato sin que la empresa contratada tenga derecho a indemnización alguna.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="110ebf17-443c-4b4d-97bb-7ec08221f40a" x="16" y="278" width="528" height="70"/>
+				<textElement/>
+				<text><![CDATA[8) DECORAKIA PROYECTOS SL. Podrá en todo momento realizar inspecciones de los trabajos realizados por la empresa contratada, para comprobar el cumplimiento de las medidas preventivas indicadas. Tanto el responsable de la empresa contratada come su personal tendrán la obligación de atender y dar las necesarias facilidades para cumplir las sugerencias que en materia de prevención de riesgos laborales realice el personal de DECORAKIA PROYECTOS SL.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4b3f4804-fcd6-4242-9904-f80ad46a6de3" x="16" y="358" width="528" height="59"/>
+				<textElement/>
+				<text><![CDATA[Régimen Legal.- En todo lo no expresamente pactado en el presente contrato, se estará a lo dispuesto en el Código Comercio y  demás normas y usos mercantiles y en su defecto por lo contenido en el Código Civil. Se estará, además, a lo contenido   en la  Ley 32/2006, de 18  de octubre reguladora  de la subcontratación en el sector de la   construcción.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7bc66189-d6a8-4619-a324-507cfae75015" x="14" y="429" width="530" height="45"/>
+				<textElement/>
+				<text><![CDATA[Juzgados y Tribunales.- Para la resolución de cuantas cuestiones o controversia s pudieran surgir del otorgamiento de este contrato, ambas partes se someten expresamente a la competencia  de los Juzgados y Tribunales de   Madrid.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e5ea0ccd-7a8d-414c-87a6-4f16ad6be20e" x="13" y="488" width="531" height="17"/>
+				<textElement/>
+				<text><![CDATA[Conformes las partes con todo ello, y para que así conste y surta los efectos oportunos, firmán el presente documento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="369a3f24-04e4-482b-b0bf-402350b16adf" x="14" y="537" width="527" height="20"/>
+				<textElement/>
+				<text><![CDATA[Fdo.: D. Jonatan Fajardo Ruano                                                    El Colaborador	
+]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="fe3197bc-965a-47a7-a873-4b74cc8fa29a" x="26" y="591" width="269" height="50"/>
+				<imageExpression><![CDATA["C:\\firmacontrato.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement uuid="7bfd38a9-5162-4a85-a0ed-244058ea7aef" x="420" y="22" width="209" height="58"/>
+				<imageExpression><![CDATA["C:\\logonomina.png"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

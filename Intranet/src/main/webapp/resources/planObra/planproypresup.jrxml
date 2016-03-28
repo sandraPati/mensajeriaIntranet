@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="planproypresup" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e7a6e6b1-cab4-47c4-abb5-acc4157d6818">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="conexionIntranet"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="proypresup_id" class="java.lang.Integer"/>
+	<parameter name="id_proyecto_presupuesto" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT p.id, p.id_proyecto_presupuesto, p.nif_empleado, p.descripcion, p.ccabecera, 
+p.contenido, p.estado, p.nota, p.condicion, p.finicio, p.ffin,p.numhoras ,e.nombre,e.apellidos
+FROM proyecto_trabajadores p inner join empleados e on(p.nif_empleado=e.nif)
+ where p.id_proyecto_presupuesto=$P{id_proyecto_presupuesto}]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="id_proyecto_presupuesto" class="java.lang.Integer"/>
+	<field name="nif_empleado" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="ccabecera" class="java.lang.String"/>
+	<field name="contenido" class="java.lang.String"/>
+	<field name="estado" class="java.lang.String"/>
+	<field name="nota" class="java.lang.String"/>
+	<field name="condicion" class="java.lang.Integer"/>
+	<field name="finicio" class="java.lang.String"/>
+	<field name="ffin" class="java.lang.String"/>
+	<field name="numhoras" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="apellidos" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="43" splitType="Stretch">
+			<textField>
+				<reportElement uuid="339a7e64-883b-41e1-abf0-68bdbcfbc41f" x="447" y="23" width="108" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ffin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="38483e87-b29f-4648-96a3-f8be3852d04d" x="180" y="22" width="30" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{numhoras}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f3b559f7-85ba-42fc-84de-ec8cf7a92ce8" x="59" y="2" width="71" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nif_empleado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2fd5a2d8-f92d-4d03-af36-f76d362348cb" x="417" y="2" width="153" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="553ae7ca-5800-4aa3-b4e6-30f53cf15769" x="299" y="22" width="113" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{finicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="89f1bc3e-2a13-4947-9cc1-91b11d7e5bac" x="130" y="2" width="120" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2f6d689f-9466-4ad1-9717-7c1522976696" x="260" y="2" width="150" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{apellidos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a1305d3d-d7c7-4d0c-9ff5-d90946450e32" x="130" y="23" width="48" height="19"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Horas: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5e63e610-5672-432d-91cd-a097e71fed51" x="260" y="22" width="39" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[F.inicio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2124c315-3f3e-4eca-bda7-8a6d77d14711" x="417" y="22" width="26" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[F.fin:]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

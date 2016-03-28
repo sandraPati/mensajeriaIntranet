@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="63dea441-f128-48de-b4ab-c77d0d55914f">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="170"/>
+	<parameter name="nif2" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select e.nif||' '||e.apellidos||', '||e.nombre as nombre,c.categoria_profesional ,f1.monto||' Euros, en' as monto ,to_char(f1.fecha, 'dd-mm-yyyy')as fecha,'desde '||c.fecha_contrato||' hasta '||f1.fecha as desdehasta
+from finiquito f1  inner join contrato c on(f1.id_contrato=c.id) inner join empleados e on(c.nif_empleado=e.nif) 
+where f1.id=(SELECT max(f.id)  FROM finiquito f WHERE f.nif_empleado=$P{nif2})
+]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="categoria_profesional" class="java.lang.String"/>
+	<field name="monto" class="java.lang.String"/>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="desdehasta" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="77ab84cd-b403-4ae7-b51d-395ead15f51b" x="25" y="27" width="174" height="20"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Recibo de finiquito]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="7bfd38a9-5162-4a85-a0ed-244058ea7aef" x="405" y="8" width="209" height="58"/>
+				<imageExpression><![CDATA["C:\\logonomina.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="675" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="31c0fb5d-e7ad-4696-811f-644cb64ea955" x="25" y="25" width="13" height="15"/>
+				<textElement/>
+				<text><![CDATA[D.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d3781293-04d1-4e06-807c-4fe0efb14023" x="25" y="45" width="334" height="16"/>
+				<textElement/>
+				<text><![CDATA[que ha trabajado en la Empresa DECORAKIA PROYECTOS SL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9ce21b39-2fda-4fc2-977b-4c493e695413" x="25" y="84" width="94" height="20"/>
+				<textElement/>
+				<text><![CDATA[con la categoría de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5013696a-5985-4034-82ef-85f75b01b870" x="25" y="104" width="230" height="20"/>
+				<textElement/>
+				<text><![CDATA[declaro que he recibido de ésta, la cantidad de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1e3b7d89-7398-4ab7-a27b-6823f49df77c" x="25" y="124" width="277" height="20"/>
+				<textElement/>
+				<text><![CDATA[concepto de liquidación total por mi baja en la Empresa.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9b8f8cfe-7444-492f-99d7-564c6a347789" x="25" y="144" width="416" height="20"/>
+				<textElement/>
+				<text><![CDATA[Quedo así indemnizado y liquidado por todos los conceptos que pudieran derivarse de ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dbbdbc3e-21df-4e4e-8429-95718fe543f1" x="25" y="94" width="446" height="20"/>
+				<textElement/>
+				<text><![CDATA[la relación laboral que unía a las partes y que queda extinguida, manifestando expresamente ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2a55d687-7dd4-4fc6-80a6-520fa20efc9d" x="25" y="184" width="380" height="20"/>
+				<textElement/>
+				<text><![CDATA[que nada más tengo que reclamar, estando de acuerdo en ello con la Empresa.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8076ec4c-3fef-4c0a-a6ac-3f4a4dc952bf" x="25" y="268" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[El trabajador]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="95e087fa-d394-4910-9d86-7174055caa09" x="311" y="324" width="160" height="50"/>
+				<imageExpression><![CDATA["C:\\firmacontrato.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="beda2c4a-bce7-4280-933f-4e2d97c151fe" x="311" y="268" width="174" height="20"/>
+				<textElement/>
+				<text><![CDATA[El/la Representante de la Empresa]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e6b96f26-48f5-49a9-a7b8-57f9f996d591" x="38" y="25" width="490" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7bf4ad79-f746-4c42-8759-213f658def93" x="119" y="84" width="409" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{categoria_profesional}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="44156775-be5c-4194-bf0f-0d48ba3ec19a" x="255" y="104" width="273" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{monto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="5e82ce7b-a500-4738-ac2b-8aa28299df5d" x="25" y="204" width="53" height="20"/>
+				<textElement/>
+				<text><![CDATA[En Madrid]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f485e2a9-cdae-46e7-9b81-d16153b075b2" x="25" y="62" width="503" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{desdehasta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="82838c59-d8b8-495b-a628-7f129cdb8df5" x="78" y="204" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="propuestaContratoCliente" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aad52ea2-e185-46bf-b132-27cd0a4c5845">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="conexionIntranet"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="919"/>
+	<parameter name="idPropuesta" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT sum(p.monto),to_char(prop.fechaproyecto, 'DD Mon YYYY') as fechaproyecto,cli.nif,cli.nombre||', '||cli.apellidos as nombrecliente,cli.direccion||' ('||cli.poblacion||') '||cli.pais||'/'||' '||cli.provincia as domicilio,
+prop.direccion||' ('||prop.poblacion||') '||prop.pais||'/'||' '||prop.provincia as domicilioPropuesta,prop.descripcion
+FROM presupuesto p inner join presupuestoc pre on(p.presup_id=pre.id) INNER JOIN subcapitulos sc on(p.subcapitulo_id=sc.id) INNER JOIN propuesta prop on(pre.propuesta_id=prop.id) INNER JOIN clientes cli on(prop.cliente_nif=cli.nif)
+where pre.propuesta_id= $P{idPropuesta}
+group by prop.fechaproyecto,cli.nif,cli.nombre,cli.apellidos,cli.direccion,cli.poblacion,cli.pais,cli.provincia,prop.direccion,prop.poblacion,prop.pais,prop.provincia,prop.descripcion
+]]>
+	</queryString>
+	<field name="sum" class="java.math.BigDecimal"/>
+	<field name="fechaproyecto" class="java.lang.String"/>
+	<field name="nif" class="java.lang.String"/>
+	<field name="nombrecliente" class="java.lang.String"/>
+	<field name="domicilio" class="java.lang.String"/>
+	<field name="domiciliopropuesta" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<image>
+				<reportElement uuid="6f4ec13e-4186-4a01-b2b4-c57e19d00f32" x="430" y="0" width="180" height="62"/>
+				<imageExpression><![CDATA["C://logonomina.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="9d55e9ea-d49b-4ea7-9b9e-d2d244d2926d" x="0" y="62" width="330" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATO DE DISEÑO Y EJECUCIÓN DE OBRAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4e19b23f-0f03-457a-aedd-df3e1830fd11" x="0" y="92" width="60" height="20"/>
+				<textElement/>
+				<text><![CDATA[En Madrid,  a ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="71e5c6ba-f496-43c4-bcff-3114acc3c84e" x="0" y="122" width="100" height="21"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[R E U N I D O S.- ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3a688abf-50a9-4a02-aa02-a118ff2e29b3" x="0" y="152" width="100" height="18"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DE UNA PARTE, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f4dcbbee-0682-4814-bd5e-ca6f22c8826c" x="266" y="152" width="138" height="18"/>
+				<textElement/>
+				<text><![CDATA[, mayor de edad, con domicilio ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="78315d0c-7ced-4f66-affa-a605134ae999" x="0" y="166" width="207" height="13"/>
+				<textElement/>
+				<text><![CDATA[provista del Documento Nacional de Identidad ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a0f4a12a-56aa-464d-84c4-958e1f2b144c" x="0" y="192" width="240" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Y DE OTRA PARTE, DON Jonatan Fajardo Ruano, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e9d2e5a7-c45b-4c01-b68d-5f70a700fb8a" x="240" y="192" width="292" height="20"/>
+				<textElement/>
+				<text><![CDATA[mayor de edad, con domicilio profesional en Fuente Nueva ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="228214b3-b6ce-4c39-89e4-0d72a8ea53cd" x="0" y="206" width="480" height="20"/>
+				<textElement/>
+				<text><![CDATA[12 (San Sebastián de los Reyes-Madrid), provisto del Documento Nacional de Identidad nº 53005868E.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9ad0f697-7415-4875-aca5-ca4a888421f6" x="0" y="241" width="111" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ I N T E R V I E N E N.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6c58d978-bfc0-44b2-8ac2-5c211289d9b0" x="0" y="263" width="230" height="20"/>
+				<textElement/>
+				<text><![CDATA[El primero, como propietario de la vivienda sita en ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="63377c09-de72-41f9-bc07-f4348d866f6c" x="400" y="263" width="124" height="20"/>
+				<textElement/>
+				<text><![CDATA[En adelante EL CLIENTE. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bb185b1e-f689-458c-b3e6-1d7dc4884e04" x="0" y="293" width="560" height="30"/>
+				<textElement/>
+				<text><![CDATA[El segundo, en nombre y representación de la entidad mercantil DECORAKIA PROYECTOS SL con domicilio social en Fuente Nueva 12 (San Sebastián de los Reyes-Madrid), provista del CIF. nº B12935466. En adelante LA EMPRESA.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="491a1148-2010-4d91-a966-851ee37e3719" x="0" y="334" width="360" height="20"/>
+				<textElement/>
+				<text><![CDATA[Ambas partes se reconocen capacidad legal suficiente para suscribir el presente ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="040b87f3-c4be-4c47-a435-acb94e60d8c7" x="360" y="334" width="200" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATO DE EJECUCIÓN ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c66d0e11-b75c-42a8-9c46-6cb84c0be262" x="0" y="349" width="400" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DE OBRAS DE REFORMA CON SUMINISTRO DE MANO DE OBRA Y MATERIALES,  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b30b4a88-ce83-470e-a91f-17572841dec0" x="400" y="349" width="160" height="15"/>
+				<textElement/>
+				<text><![CDATA[,  a cuyo fin,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc86c8e4-dcf6-4d2a-af51-b54db8fc3d3e" x="0" y="389" width="80" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[E X P O N E N.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2f3f9b79-37b8-4674-9822-cfa2c98294bf" x="0" y="412" width="60" height="20"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[PRIMERO.- ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6d90f5e8-a302-45a2-bd00-0e519d8c8691" x="60" y="412" width="150" height="20"/>
+				<textElement/>
+				<text><![CDATA[Que EL CLIENTE quiere realizar ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a9cf4e0f-fd00-4324-8256-690f77c11e26" x="395" y="412" width="135" height="20"/>
+				<textElement/>
+				<text><![CDATA[y es propietario de la misma.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2288ff1f-a6bf-441b-917f-ea804109ef3d" x="0" y="441" width="560" height="30"/>
+				<textElement/>
+				<text><![CDATA[SEGUNDO.- Que LA EMPRESA, es una entidad dedica a la construcción y rehabilitación de toda clase de inmuebles, estando dado de alta en el epígrafe correspondiente del IAE. 
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7eefb6ec-5a6a-4375-9720-f8aa29de2071" x="0" y="488" width="560" height="30"/>
+				<textElement/>
+				<text><![CDATA[TERCERO.- Que ambas partes, CLIENTE y EMPRESA, han llegado a un acuerdo para la realización de las obras referidas, de conformidad con las siguientes, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c66d4f6e-9e16-4145-9706-96dd3d1d3f44" x="170" y="712" width="220" height="75" forecolor="#7D785F"/>
+				<box>
+					<topPen lineColor="#000000"/>
+					<leftPen lineColor="#000000"/>
+					<bottomPen lineColor="#000000"/>
+					<rightPen lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Decorakia Proyectos
+Fuente Nueva 12
+28700. San Sebastián de los Reyes (Madrid)
+B12935466
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="052aa8e4-7e7b-41a0-a396-7c183ba66bd1" x="70" y="92" width="180" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fechaproyecto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="873b53e9-84ec-482c-b9e5-3331da643094" x="100" y="152" width="166" height="18"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombrecliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bedad0a5-c627-41c6-946d-f19c7c03d6d6" x="404" y="151" width="155" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{domicilio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="dcb64839-1127-41f0-990a-a1135f3e9882" x="207" y="166" width="173" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ed32a017-b4c6-41f9-851f-d6e64e2132b5" x="231" y="263" width="163" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{domiciliopropuesta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3046e8ac-114a-4591-a256-033e26ee88f6" x="210" y="412" width="180" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="802">
+			<staticText>
+				<reportElement uuid="985576aa-ca3e-4e75-9e59-237bf2be5d4a" x="0" y="62" width="140" height="21"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ E S T I P U L A C I O N E S.-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="28cee9ce-f7d1-4b6d-9b85-bf1e84b1aced" x="0" y="95" width="170" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ I.- Contrato de ejecución de obra.- ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="735fe182-8584-402c-8ad9-3b310daa122a" x="170" y="95" width="390" height="20"/>
+				<textElement/>
+				<text><![CDATA[EL CLIENTE encarga la ejecución de la obra convenida, consistentes en ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f2718e23-d407-4497-afe1-81dfd90e42e4" x="0" y="108" width="560" height="40"/>
+				<textElement/>
+				<text><![CDATA[las obras de reforma que se especifican en el Anexo nº1 del presente contrato, a la EMPRESA, representada en este acto por Don Jonatan Fajardo Ruano, que se compromete a efectuar la obra encargada, en el plazo previsto y con las demás condiciones que se estipulan en este documento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8a04e606-59c9-488d-ab9f-207bf4944b0c" x="0" y="158" width="560" height="30"/>
+				<textElement/>
+				<text><![CDATA[ Las obras encargadas se realizarán siguiendo estrictamente las especificaciones contenidas en el documento que se acompaña como Anexo nº 1 al presente contrato.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dd1350de-e2ce-432e-8f2e-a67201e85cf1" x="0" y="201" width="60" height="21"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ II.- Precio.- ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="24d25d4e-e4c1-4408-a2ed-6f37fea691f7" x="60" y="201" width="335" height="21"/>
+				<textElement/>
+				<text><![CDATA[El precio de la realización de la obra encargada, asciende a la cantidad de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e5f3cb39-40d9-4f00-8161-0a396c750c12" x="0" y="215" width="140" height="20"/>
+				<textElement/>
+				<text><![CDATA[más el IVA correspondiente. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1972fd25-4b07-4c73-a44c-62cd8bcfa1da" x="0" y="240" width="560" height="40"/>
+				<textElement/>
+				<text><![CDATA[El precio estipulado es cerrado, de tal manera que no podrá sufrir variaciones al alza como consecuencia de las eventuales subidas de precio que pudieran sufrir el coste de los materiales, salvo la modificación de las calidades de los mismos, y la ampliación en  nuevas partidas y/o unidades de obra.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1db139ad-7f5d-43b7-a0fb-b988cbbd922b" x="0" y="292" width="560" height="40"/>
+				<textElement/>
+				<text><![CDATA[El importe establecido podrá sufrir variaciones en caso de que los materiales seleccionados por la PROPIEDAD sean inferiores o superiores a los presentados en el presupuesto que figura como ANEXO I. En ningún caso esto podrá afectar a la partida de mano de obra.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bc90597d-c109-4ed7-b073-70c36b94b028" x="0" y="352" width="120" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[III.- Plazo de ejecución.- ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f9c0de28-f3f7-4b02-9eea-e82c6f38fc06" x="120" y="352" width="440" height="20"/>
+				<textElement/>
+				<text><![CDATA[Se acuerda por ambas partes, que el plazo de ejecución de la obra encargada, se realizará en un]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e5973c79-2153-4c9b-a34b-40b51ff59dcd" x="0" y="367" width="560" height="30"/>
+				<textElement/>
+				<text><![CDATA[plazo máximo de 25 días hábiles desde la obtención de las licencias correspondientes o comienzo de obras, salvo causas de fuerza mayor.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a9ae10d6-e8cd-4d82-9310-fbd15ebfb70f" x="0" y="412" width="100" height="21"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ IV.- Forma de pago.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d2cfd3d3-61f8-4207-a9b4-30f4ae11e352" x="0" y="438" width="560" height="30"/>
+				<textElement/>
+				<text><![CDATA[- 20 % sobre total del presupuesto 7 días  antes del inicio de los trabajos, mediante transferencia bancaria a la cuenta: Banco ING DIRECT  ES09 1465 0100 94 1900253486]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="48a76402-885f-444b-adc7-d7026a85ca13" x="0" y="479" width="560" height="30"/>
+				<textElement/>
+				<text><![CDATA[-80% mediante certificaciones periódicas semanales, acreditándose las unidades de obra realizadas, debidamente relacionadas por partidas. Con pagos efectuados en un máximo de 48horas desde la entrega de la certificación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="81f723f1-dda2-41c9-a71a-7a2febb50bab" x="170" y="712" width="220" height="75" forecolor="#7D785F"/>
+				<box>
+					<topPen lineColor="#000000"/>
+					<leftPen lineColor="#000000"/>
+					<bottomPen lineColor="#000000"/>
+					<rightPen lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Decorakia Proyectos
+Fuente Nueva 12
+28700. San Sebastián de los Reyes (Madrid)
+B12935466
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ec6c7230-8e2c-4b46-890f-a98376c6cb7e" x="395" y="201" width="165" height="21"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{sum}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement uuid="6f4ec13e-4186-4a01-b2b4-c57e19d00f32" x="431" y="10" width="180" height="62"/>
+				<imageExpression><![CDATA["C://logonomina.png"]]></imageExpression>
+			</image>
+		</band>
+		<band height="787">
+			<staticText>
+				<reportElement uuid="f50f47c1-4b35-43f4-8951-c6a3b930ba08" x="170" y="712" width="220" height="75" forecolor="#7D785F"/>
+				<box>
+					<topPen lineColor="#000000"/>
+					<leftPen lineColor="#000000"/>
+					<bottomPen lineColor="#000000"/>
+					<rightPen lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Decorakia Proyectos
+Fuente Nueva 12
+28700. San Sebastián de los Reyes (Madrid)
+B12935466
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c6c8843c-639e-4f38-9bc4-7be557d142dd" x="0" y="62" width="160" height="18"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[V.- Obligaciones de la EMPRESA. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f9a4578f-de30-48f5-a06c-560353240e17" x="160" y="62" width="140" height="18"/>
+				<textElement/>
+				<text><![CDATA[El contratista está obligado a:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="209ff789-b739-4b71-92fb-754c05a2f0b4" x="0" y="85" width="20" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="05f0f265-9c26-4cf5-b40c-ae3d366cce4e" x="20" y="85" width="540" height="20"/>
+				<textElement/>
+				<text><![CDATA[Ejecutar la obra con sujeción a lo estipulado, a fin de alcanzar la calidad exigida en el presupuesto de obra.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ee9c8c53-0fd7-4d25-a65f-5433b6657aa0" x="0" y="112" width="20" height="30"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[b)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="769c0560-9b93-47a3-a855-a96a5c07e28b" x="20" y="112" width="540" height="30"/>
+				<textElement/>
+				<text><![CDATA[Suministrar la mano de obra necesaria, ya sea auxiliar o especializada, para la realización de la obra encargada, siendo de su cuenta el pago de los salarios.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0d8a0b66-89a4-4ab5-b387-6141b3e2a803" x="1" y="154" width="20" height="30"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[c)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bf45c3b2-159c-45f4-84c7-6342ab5e598a" x="21" y="154" width="540" height="30"/>
+				<textElement/>
+				<text><![CDATA[Cumplir con todas las obligaciones de carácter laboral que impone la Ley, y especialmente las de prevención de riesgos laborales.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0520347d-f45f-4693-840b-d2762d1859ea" x="1" y="194" width="20" height="30"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[d)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4bf47c88-b5cb-42d8-8887-23c66b49e063" x="21" y="194" width="540" height="30"/>
+				<textElement/>
+				<text><![CDATA[Suministrar toda la maquinaria, accesorios, utillaje de todo tipo, y todos los materiales necesarios para la ejecución de la obra encargada.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="79ac998b-a843-43e3-a307-927fc95de3e9" x="22" y="235" width="540" height="15"/>
+				<textElement/>
+				<text><![CDATA[Ejecutar la obra encargada en el plazo previsto, y entregar las certificaciones de obra en los plazos estipulados.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="236dacb6-c9ef-43ef-98eb-39dfb9278c1e" x="2" y="235" width="20" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[e)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d58c80a1-ab07-49bf-8807-9db0ad43d070" x="0" y="270" width="560" height="20"/>
+				<textElement/>
+				<text><![CDATA[Así mismo, responderá la empresa contratista:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d29ce103-add5-4f0a-bfef-1d466ed6ceda" x="1" y="300" width="558" height="30"/>
+				<textElement/>
+				<text><![CDATA[1. De cuantos daños o perjuicios pudieran irrogarse por motivo de su actividad, a los vecinos de la comunidad, propietarios de los edificios colindantes, o transeúntes.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="59b9cd22-3fd6-4360-a744-2e0b63d410e2" x="0" y="340" width="562" height="30"/>
+				<textElement/>
+				<text><![CDATA[2. De los defectos o faltas que pudieran existir en la ejecución de la obra como consecuencia de su impericia o por la deficiente calidad de los materiales empleados.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5cd64bc3-1a91-440a-98e1-d4aaea8dc063" x="0" y="378" width="559" height="42"/>
+				<textElement/>
+				<text><![CDATA[La empresa contratista se obliga a suscribir un seguro de cobertura de responsabilidad civil, por el importe del precio convenido para la obra, seguro que deberá estar vigente hasta seis meses después de la fecha de recepción definitiva de la obra.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2dc85d7e-f05f-48fa-b504-44927acac43b" x="0" y="440" width="150" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[V.- Obligaciones del CLIENTE.-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="514d54dc-62f4-4fe4-b21a-2c569c728389" x="150" y="440" width="160" height="20"/>
+				<textElement/>
+				<text><![CDATA[Son obligaciones de la Propietaria:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5c0dd27b-d315-4e65-a81c-cd720234dd5d" x="0" y="470" width="560" height="20"/>
+				<textElement/>
+				<text><![CDATA[a) El pago de la obra conforme a la forma y plazos estipulados.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9aa98b41-811e-4713-8963-96b9408d3722" x="-1" y="500" width="562" height="20"/>
+				<textElement/>
+				<text><![CDATA[b) Facilitar la documentación e información previa necesaria para la adecuada ejecución de las obras encargadas. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0520b857-f956-4041-a7d0-b2e29a70a6db" x="0" y="530" width="560" height="20"/>
+				<textElement/>
+				<text><![CDATA[c) Gestionar y obtener las preceptivas licencias y autorizaciones administrativas.]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="6f4ec13e-4186-4a01-b2b4-c57e19d00f32" x="430" y="10" width="180" height="62"/>
+				<imageExpression><![CDATA["C://logonomina.png"]]></imageExpression>
+			</image>
+		</band>
+		<band height="787">
+			<staticText>
+				<reportElement uuid="5c434823-0d4f-4bfa-bf4e-d5c5840fe2e0" x="170" y="712" width="220" height="75" forecolor="#7D785F"/>
+				<box>
+					<topPen lineColor="#000000"/>
+					<leftPen lineColor="#000000"/>
+					<bottomPen lineColor="#000000"/>
+					<rightPen lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Decorakia Proyectos
+Fuente Nueva 12
+28700. San Sebastián de los Reyes (Madrid)
+B12935466
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d4b48e9c-ad5b-4c01-bc19-5707c94fcafd" x="1" y="76" width="558" height="18"/>
+				<textElement/>
+				<text><![CDATA[ d) Al facilitar, a su costa, el suministro necesario de electricidad y agua para la ejecución de la obra.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ac2c43e2-ed0d-4bb3-9dfc-691b83b7743b" x="1" y="104" width="148" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[VI.- Resolución del contrato.- ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0c4d9ee4-a618-4871-827b-39f1e96cd084" x="149" y="104" width="409" height="20"/>
+				<textElement/>
+				<text><![CDATA[Serán causa de resolución del contrato el incumplimiento de las obligaciones ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="51c01e0d-5ddb-4ddd-93b4-9e5b8bd534eb" x="0" y="119" width="560" height="30"/>
+				<textElement/>
+				<text><![CDATA[reflejadas en el presente contrato, pudiendo la parte no incumplidora exigir su cumplimiento, u optar por su resolución, con indemnización de los daños y perjuicios ocasionados.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="416c8e78-3ad3-4bfe-810c-6f1eaaa337f1" x="0" y="154" width="180" height="30"/>
+				<textElement/>
+				<text><![CDATA[En concreto, son causas de resolución:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ac0a7a68-9ccd-45c9-ac6d-ba10f979bb85" x="0" y="194" width="90" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Por LA EMPRESA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="28a0d850-6e03-4b12-a8b9-dacc2ed3bb1b" x="-1" y="214" width="559" height="20"/>
+				<textElement/>
+				<text><![CDATA[ a) El impago del precio de la ejecución de obra en la forma y plazos estipulados.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b30c8a20-f4b2-4e96-adcd-536f6718b219" x="0" y="234" width="558" height="30"/>
+				<textElement/>
+				<text><![CDATA[b) La paralización de las obras por parte DEL CLIENTE sin causa justificada, debiendo abonarse en este caso las partidas ejecutadas.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="57db0eb3-f8b6-4556-b65b-c4dfb2dee2c2" x="0" y="274" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Por EL CLIENTE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dfb90014-d95b-4d42-b330-e7de65384bbf" x="0" y="294" width="558" height="20"/>
+				<textElement/>
+				<text><![CDATA[a) Por un retraso en el plazo de la ejecución pactada de más de 15 días. Salvo causas de fuerza Mayor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d1d1c314-58b4-4458-8d91-99b1495129a0" x="-1" y="327" width="150" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[VII.- Recepción de las obras.- ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a183463c-cd37-4217-bcea-52805f055a31" x="150" y="327" width="409" height="20"/>
+				<textElement/>
+				<text><![CDATA[Una vez terminadas las obras de reforma y rehabilitación encargadas, la EMPRESA deberá  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1ed89006-2b48-4f98-952b-fc23b68ce38a" x="0" y="342" width="558" height="30"/>
+				<textElement/>
+				<text><![CDATA[informar AL CLIENTE, de la terminación de las mismas. Se procederá a su recepción definitiva una vez que EL CLIENTE haya comprobado si su realización se ha efectuado conforme al presupuesto, y a su satisfacción. En el caso de que se comprobare la existencia de deficiencias, la empresa contratista estará obligada a reparar a su cargo los defectos observados. Se establece un plazo de 2 años de garantía sobre los trabajos efectuados por la CONTRATA. No se cubrirán los desperfectos derivados por el uso así como aquellos problemas consecuencia de un mal uso o mantenimiento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0b457537-bbad-47a8-8026-8956bf8c5a7a" x="0" y="386" width="111" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[VIII.- Régimen Legal.- ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a6d76b17-fc42-47b5-9308-285158fd7191" x="107" y="386" width="453" height="20"/>
+				<textElement/>
+				<text><![CDATA[En todo lo no expresamente pactada en el presente contrato, se estará a los dispuesto en el Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c46350c4-41e3-4e07-84c5-c71808cdafd1" x="2" y="401" width="278" height="20"/>
+				<textElement/>
+				<text><![CDATA[Civil y demás normas que sean de aplicación.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="63d9560c-00dd-45ad-8f03-340863d19f1c" x="0" y="436" width="144" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[IX.- Juzgados y Tribunales.- ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e14c5f27-6fc3-429c-a4e7-2b4e04a82034" x="140" y="436" width="420" height="20"/>
+				<textElement/>
+				<text><![CDATA[Para la resolución de cuantas cuestiones o controversias pudieran surgir del otorgamiento de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ad59c624-1003-4e8f-92ec-5b30b15e433f" x="1" y="451" width="561" height="20"/>
+				<textElement/>
+				<text><![CDATA[este contrato, ambas partes se someten expresamente a la competencia de los Juzgados y Tribunales de Madrid.]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="6f4ec13e-4186-4a01-b2b4-c57e19d00f32" x="430" y="10" width="180" height="62"/>
+				<imageExpression><![CDATA["C://logonomina.png"]]></imageExpression>
+			</image>
+		</band>
+		<band height="802">
+			<staticText>
+				<reportElement uuid="83c68dfa-9ef7-4fde-a393-1e557d3ed9e6" x="170" y="712" width="220" height="75" forecolor="#7D785F"/>
+				<box>
+					<topPen lineColor="#000000"/>
+					<leftPen lineColor="#000000"/>
+					<bottomPen lineColor="#000000"/>
+					<rightPen lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Decorakia Proyectos
+Fuente Nueva 12
+28700. San Sebastián de los Reyes (Madrid)
+B12935466
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d44bbff7-7006-40d2-87bc-af9697d9610f" x="1" y="62" width="558" height="48"/>
+				<textElement/>
+				<text><![CDATA[ Conformes las partes con todo ello, y para que así conste y surta los efectos oportunos, firman el presente documento, por duplicado ejemplar, extendido en cinco folios de papel común, en una sola cara, y en el lugar y fecha al encabezamiento indicados.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0e54bd37-66b9-4cda-a4fe-7e754d3ba699" x="44" y="150" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[EL CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e665712a-c128-4ca8-8400-aa383610822e" x="324" y="150" width="70" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[LA EMPRESA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b43bfedb-11d4-4c7e-958e-22ea84d40828" x="44" y="289" width="40" height="20"/>
+				<textElement/>
+				<text><![CDATA[Fdo.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e635dac8-d159-49d5-816e-9c35d843133b" x="324" y="289" width="199" height="20"/>
+				<textElement/>
+				<text><![CDATA[Fdo.: Don Jonatan Fajardo Ruano]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="6f4ec13e-4186-4a01-b2b4-c57e19d00f32" x="431" y="2" width="180" height="62"/>
+				<imageExpression><![CDATA["C://logonomina.png"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

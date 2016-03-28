@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6c4e50ae-bb78-4628-b556-8cddb4e287aa">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1109"/>
+	<parameter name="categoria_profesional" class="java.lang.String"/>
+	<parameter name="grupo" class="java.lang.String"/>
+	<parameter name="num_horas1" class="java.lang.String"/>
+	<parameter name="num_horas2" class="java.lang.String"/>
+	<parameter name="rango" class="java.lang.String"/>
+	<parameter name="tiempo" class="java.lang.String"/>
+	<parameter name="distribucion_tiempo" class="java.lang.String"/>
+	<parameter name="corresponde_contrato" class="java.lang.String"/>
+	<parameter name="pacto_horas" class="java.lang.String"/>
+	<parameter name="fecha_desde" class="java.lang.String"/>
+	<parameter name="periodo_prueba" class="java.lang.String"/>
+	<parameter name="contrato_relevo" class="java.lang.String"/>
+	<parameter name="retribucion_total" class="java.lang.String"/>
+	<parameter name="vacaciones" class="java.lang.String"/>
+	<parameter name="fecha_contrato" class="java.lang.String"/>
+	<parameter name="clausulas" class="java.lang.String"/>
+	<parameter name="conceptos_salariales" class="java.lang.String"/>
+	<parameter name="tipo_contrato" class="java.lang.String"/>
+	<parameter name="nif" class="java.lang.String"/>
+	<parameter name="Dtipo_contrato" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_fin" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT nif,apellidos||', '||nombre as nombres,to_char(fecha_nacimiento, 'dd Mon yyyy') as  fecha_nacimiento,numero_afiliacionss as num_afiliacionss ,nivel_formativo,
+nacionalidad,direccion as domicilio,pais,provincia,poblacion
+FROM empleados where nif=$P{nif}]]>
+	</queryString>
+	<field name="nif" class="java.lang.String"/>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="fecha_nacimiento" class="java.lang.String"/>
+	<field name="num_afiliacionss" class="java.lang.String"/>
+	<field name="nivel_formativo" class="java.lang.String"/>
+	<field name="nacionalidad" class="java.lang.String"/>
+	<field name="domicilio" class="java.lang.String"/>
+	<field name="pais" class="java.lang.String"/>
+	<field name="provincia" class="java.lang.String"/>
+	<field name="poblacion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<textField>
+				<reportElement uuid="979a667f-6f9a-445c-aab4-ab0d6fd8f972" x="60" y="415" width="177" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pais}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="abf6eb6c-7bbb-4071-b789-5f10bf1c44be" x="196" y="10" width="194" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tipo_contrato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="11ee17c4-d1fa-4546-bb9c-3d320db47029" x="60" y="296" width="130" height="34"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f0f702d5-2b8a-49e5-bbca-11fe137eada5" x="11" y="10" width="180" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATO DE TRABAJO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="44c43c4f-140e-4e33-b60e-57ef3d186aec" x="231" y="478" width="70" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DECLARAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="62fa6848-1a7c-4e03-b76a-9816b9aab439" x="391" y="210" width="129" height="20"/>
+				<textElement/>
+				<text><![CDATA[Otras instalaciones/Obras  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7c7ab65d-7bc7-4d9b-ac0d-18077e5ccaea" x="11" y="62" width="59" height="18"/>
+				<textElement/>
+				<text><![CDATA[CIF/NIF/NIE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1990f32b-a90b-435d-baab-3dd4dbc12aba" x="177" y="678" width="294" height="15"/>
+				<textElement/>
+				<text><![CDATA[, con  los  descansos   establecidos  legal  o convencionalmente.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d40e00a-807d-4ebc-9201-1a08e063de6e" x="11" y="438" width="239" height="20"/>
+				<textElement/>
+				<text><![CDATA[Con  la  asistencia  legal,  en  su  caso,  de  D./Dña.  ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="1475df5f-6431-4fb8-ba93-b326abe0f244" x="391" y="316" width="129" height="18"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fecha_nacimiento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1e8b39d5-8134-48cd-95ea-548d0864d51c" x="231" y="296" width="59" height="18"/>
+				<textElement/>
+				<text><![CDATA[NIF./NIE (2)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="411a2bb1-a326-4291-ba38-4874ba597884" x="34" y="761" width="236" height="20"/>
+				<textElement/>
+				<text><![CDATA[La jornada a tiempo completo prevista en el Convenio Colectivo de aplicación. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3719a5bc-a701-479f-af01-3e87e986cb8a" x="11" y="40" width="160" height="20"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATOS DE LA EMPRESA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="482faad9-e827-46a2-93e3-098ef5f815ed" x="391" y="338" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[NACIONALIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="61cf4a0c-9fb6-4105-a6e2-a10022d70f07" x="371" y="588" width="190" height="20"/>
+				<textElement/>
+				<text><![CDATA[, de acuerdo con el sistema de ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="26f24887-fcdf-4697-a7fc-824d66c5ec94" x="255" y="316" width="122" height="18"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nif}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="118412a7-6d98-4ece-9c41-822f17bf21a3" x="11" y="387" width="150" height="13"/>
+				<textElement/>
+				<text><![CDATA[MUNICIPIO DEL DOMICILIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="24bb3b8d-e988-4d22-b1fe-e5441458120d" x="190" y="189" width="60" height="20"/>
+				<textElement/>
+				<text><![CDATA[NÚMERO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4e36a5be-5e67-41af-8041-e32833d9e4ce" x="11" y="608" width="470" height="20"/>
+				<textElement/>
+				<text><![CDATA[clasificación profesional vigente en la empresa, en el centro de trabajo ubicado en (calle, nº y localidad) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="10899ea3-43b4-40d8-98c9-b8ed829c5e50" x="390" y="296" width="130" height="18"/>
+				<textElement/>
+				<text><![CDATA[FECHA  DE NACIMIENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d5e913e4-0cbc-4474-9720-289402638b13" x="11" y="80" width="179" height="20"/>
+				<textElement/>
+				<text><![CDATA[Don. Jonatan Fajardo Ruano]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1bf81030-c958-47f7-adba-b12355ed5d92" x="10" y="568" width="260" height="20"/>
+				<textElement/>
+				<text><![CDATA[PRIMERA: El/la trabajador/a prestará sus servicios como]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0507b8f0-8938-462e-9e09-cbb8b006b587" x="11" y="458" width="70" height="20"/>
+				<textElement/>
+				<text><![CDATA[con  NIF./NIE.   ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="27ac8377-8e79-4741-87ee-4f1b52ed6cbc" x="290" y="100" width="110" height="20"/>
+				<textElement/>
+				<text><![CDATA[DOMICILIO SOCIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ff803455-6d20-43f2-8d0c-169fee6ee820" x="291" y="121" width="219" height="28"/>
+				<textElement/>
+				<text><![CDATA[Fuente Nueva 12. San Sebastián de los Reyes 28703]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b8bb787d-93fe-4fa9-8d1d-4a0c1b2937c1" x="10" y="234" width="227" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATOS DEL CENTRO DE TRABAJO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5d271071-fc2a-40de-8274-ca4591eb2ebe" x="11" y="338" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Nº AFILIACIÓN S.S.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="227c50e1-ba7d-4fbe-9cf5-687bd34c685e" x="221" y="458" width="120" height="20"/>
+				<textElement/>
+				<text><![CDATA[,  en  calidad  de]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="82062d3b-6cdd-44ac-8dc4-a9795e8bd7c9" x="91" y="458" width="126" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="97fb4bc6-13a7-4b5b-82e9-757510478005" x="411" y="701" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{tiempo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="0e37c960-7af4-497f-a44c-2d13c505819a" x="290" y="256" width="61" height="20"/>
+				<textElement/>
+				<text><![CDATA[MUNICIPIO]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="15f50bca-37ae-4b92-a949-5a71a8ec6198" x="391" y="387" width="129" height="28"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{domicilio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ab3a75d2-918b-4921-a448-6db5cd627244" x="191" y="338" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[NIVEL FORMATIVO]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0e4c36fb-c9d4-4708-a5bd-b29331d954d5" x="264" y="438" width="256" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="02eee5d6-115f-47e7-9c52-a02a8d035287" x="11" y="149" width="80" height="20"/>
+				<textElement/>
+				<text><![CDATA[PAIS  España]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7440f2cb-0535-466b-b790-22751e956cf5" x="311" y="660" width="160" height="18"/>
+				<textElement/>
+				<text><![CDATA[horas semanales, prestadas de ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="7668499f-1e79-4358-af6b-8c6fe9dae26a" x="211" y="588" width="160" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{grupo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="7f4c81dc-e25a-45eb-b99e-9e2f8ee351be" x="34" y="701" width="256" height="20"/>
+				<textElement/>
+				<text><![CDATA[A tiempo parcial: la jornada de trabajo ordinaria será de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="302bd4c3-f191-4419-98ee-ceb86b58c115" x="34" y="660" width="227" height="18"/>
+				<textElement/>
+				<text><![CDATA[A tiempo completo: la jornada de trabajo será de ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="eaf7e5f9-c7d5-49a4-a667-0879f473617a" x="261" y="660" width="50" height="18"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{num_horas1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="249aada9-17f0-449d-acdb-db0d6788e038" x="11" y="508" width="560" height="30"/>
+				<textElement/>
+				<text><![CDATA[Que reúnen los requisitos exigidos para la celebración del presente contrato y,   en su consecuencia, acuerdan formalizarlo con  arreglo a      las  siguientes:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fab5356d-5aba-44ef-9eaa-7f9b1ea5bec3" x="11" y="588" width="199" height="20"/>
+				<textElement/>
+				<text><![CDATA[profesional / categoría / nivel profesional de]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="913a9913-3f89-4b8b-bc30-c89977a70080" x="24" y="360" width="157" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{num_afiliacionss}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e982da4a-9868-4846-917d-c902ccce6af2" x="11" y="296" width="39" height="18"/>
+				<textElement/>
+				<text><![CDATA[D./DÑA.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="45d4c05d-f6c9-4f58-b5ab-17d1a6da26e1" x="10" y="169" width="230" height="20"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATOS DE LA CUENTA DE COTIZACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b668140f-35e5-4366-abef-d8c376337c81" x="362" y="702" width="43" height="19"/>
+				<textElement/>
+				<text><![CDATA[, horas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="86880353-42e2-47d0-a054-dd5bd94aa366" x="391" y="256" width="129" height="20"/>
+				<textElement/>
+				<text><![CDATA[San Sebastián de los Reyes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d6851d0b-6e3b-48a3-8847-2af2e8703b40" x="107" y="189" width="60" height="20"/>
+				<textElement/>
+				<text><![CDATA[COD. PROV.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5a9bd990-257c-41ac-905f-af212a2132db" x="150" y="149" width="60" height="20"/>
+				<textElement/>
+				<text><![CDATA[MUNICIPIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a806959b-0684-40ab-9e82-3b765f6ca628" x="11" y="276" width="179" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATOS DEL/DE LA TRABAJADOR/A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2de6a332-adac-4734-9881-cea694753771" x="11" y="100" width="220" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE O RAZÓN SOCIAL DE LA EMPRESA]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c12f77a8-4df4-4be7-9f5b-5b386f122c84" x="194" y="360" width="177" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nivel_formativo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2679c1b7-cc47-47aa-8516-04ad714dc7e2" x="32" y="678" width="140" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{rango}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5b63153a-526f-45f4-aff6-71b9c8b10615" x="392" y="360" width="128" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nacionalidad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="dd996c34-d518-4617-97ff-03513de1350a" x="461" y="568" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[,  incluido en el grupo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d2066ffa-609b-4898-ae73-982cae414d4d" x="56" y="721" width="255" height="20"/>
+				<textElement/>
+				<text><![CDATA[siendo esta jornada inferior a (marque con una X lo que corresponda):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="69a84258-fe80-4ae1-baff-d6d93990663c" x="21" y="120" width="178" height="19"/>
+				<textElement/>
+				<text><![CDATA[DECORAKIA PROYECTOS SL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fc32fc0f-cba9-42b1-aa7e-7e004f284a3d" x="191" y="210" width="59" height="20"/>
+				<textElement/>
+				<text><![CDATA[1211038149]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6e8abae9-2c67-4bea-8ac3-887c33392ebd" x="231" y="548" width="70" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e383a209-f34b-4033-b328-03d4ab725ce3" x="11" y="638" width="190" height="20"/>
+				<textElement/>
+				<text><![CDATA[SEGUNDA: La jornada de trabajo  será:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="943707a0-b1c9-407c-93e7-b2e4dff59963" x="270" y="568" width="191" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{categoria_profesional}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="291bd52a-8646-4014-93da-5177eeb46127" x="11" y="256" width="80" height="20"/>
+				<textElement/>
+				<text><![CDATA[PAIS  España]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e8b218d9-81dc-4645-a32d-cb93bfde53d5" x="390" y="189" width="130" height="20"/>
+				<textElement/>
+				<text><![CDATA[ACTIVIDAD  ECONÓMICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d3d8450c-3f23-4847-868a-f91a6bb2cb7d" x="410" y="149" width="60" height="20"/>
+				<textElement/>
+				<text><![CDATA[C. POSTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="780201fc-d190-427e-88e4-965064c1f711" x="21" y="210" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[0111]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c1aa2f7a-b51c-42b7-9c51-af7f529ceff8" x="34" y="741" width="236" height="20"/>
+				<textElement/>
+				<text><![CDATA[La de un/a trabajador/a a tiempo completo  comparable.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="143aada1-663f-46c1-864d-7d6d06ea88ea" x="290" y="80" width="101" height="20"/>
+				<textElement/>
+				<text><![CDATA[NIF./NIE 53005868E]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="7ab23f56-d01b-42d3-8c61-46c18f7426f6" x="290" y="701" width="64" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{num_horas2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e323a289-7bbb-403c-8d05-c422dfa13ab5" x="34" y="781" width="177" height="20"/>
+				<textElement/>
+				<text><![CDATA[La jornada máxima legal.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9b70a070-d095-495e-b1e0-8d5327a75ab8" x="328" y="387" width="61" height="13"/>
+				<textElement/>
+				<text><![CDATA[DOMICILIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="803e5a94-74c6-4fa6-9de6-1114d2d32da1" x="270" y="189" width="70" height="20"/>
+				<textElement/>
+				<text><![CDATA[DIG.CONTR.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e3c5bc7c-3d54-4d0b-b55c-19e8729e839f" x="410" y="80" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[EN CONCEPTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b57bfec3-bf00-46a9-a7f8-daa5d2f5237f" x="10" y="189" width="61" height="20"/>
+				<textElement/>
+				<text><![CDATA[RÉGIMEN]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="7bfd38a9-5162-4a85-a0ed-244058ea7aef" x="400" y="2" width="209" height="58"/>
+				<imageExpression><![CDATA["C:\\logonomina.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement uuid="91610992-c2db-4350-9cbd-9ceadd8dfb9f" x="164" y="387" width="124" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{poblacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1e992b75-a0ca-406c-bce2-3038bf4b4575" x="11" y="415" width="37" height="20"/>
+				<textElement/>
+				<text><![CDATA[PAIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="afeb7aea-ec47-4ae0-9321-62118af706c8" x="264" y="415" width="67" height="20"/>
+				<textElement/>
+				<text><![CDATA[PROVINCIA]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="fb60993c-6d5b-4d53-9bf5-dde838684b7f" x="331" y="415" width="189" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{provincia}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="802">
+			<staticText>
+				<reportElement uuid="dc87bad2-5f3b-464d-a9f8-c0bf708fa629" x="22" y="446" width="266" height="23"/>
+				<textElement/>
+				<text><![CDATA[DECORAKIA PROYECTOS SL]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="117a46d7-e71e-4517-a7a7-8ed08c3bf00c" x="280" y="334" width="95" height="18"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{retribucion_total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2179ca25-b31c-48bc-82ab-e1c83d47f2a2" x="22" y="469" width="547" height="17"/>
+				<textElement/>
+				<text><![CDATA[NOVENA:  El contenido del presente contrato se comunicará al Servicio Público de Empleo de San Sebastiás de los Reyes]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="95e087fa-d394-4910-9d86-7174055caa09" x="213" y="724" width="160" height="50"/>
+				<imageExpression><![CDATA["C:\\firmacontrato.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement uuid="ab7bc15a-639c-48c2-add2-8121d2adcc65" x="22" y="546" width="547" height="60"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{clausulas}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ebec9473-807e-4697-b85e-4469a6c9ca30" x="14" y="212" width="235" height="20"/>
+				<textElement/>
+				<text><![CDATA[CUARTA: La duración del presente contrato será ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b0479c7e-6969-41b6-be10-04138986d1e6" x="22" y="414" width="558" height="32"/>
+				<textElement/>
+				<text><![CDATA[OCTAVA : En lo no previsto en este contrato, se estará a la legislación vigente que resulte de aplicación, y particularmente, el Estatuto de los Trabajadores, aprobado por el R.D. Legislativo 1/1995, de 24 de marzo , y en el Convenio Colectivo de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="180de7ec-fb7c-446c-ac96-1b8488434c7e" x="48" y="684" width="500" height="24"/>
+				<textElement/>
+				<text><![CDATA[El/la trabajador/a	                                      El/la representante	                       El/la representante legal]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="9ede0a4d-1b76-43c2-acbd-abd1b567884f" x="229" y="55" width="313" height="18"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{distribucion_tiempo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9a53487b-8275-422c-8f39-9fa79da53073" x="384" y="334" width="79" height="18"/>
+				<textElement/>
+				<text><![CDATA[euros brutos]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="1b130438-969f-43cb-9585-30d9e905f061" x="16" y="238" width="90" height="23"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{fecha_desde}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a539de71-8db7-41c7-88cc-b48ef1f42c87" x="237" y="704" width="305" height="21"/>
+				<textElement/>
+				<text><![CDATA[de la Empresa	                         del/de la menor, si procede]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="7724cfff-e928-4064-ad3f-f8787c041768" x="295" y="358" width="274" height="14"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{conceptos_salariales}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="60c515db-0ff6-422f-bca8-87c504838969" x="184" y="658" width="15" height="16"/>
+				<textElement/>
+				<text><![CDATA[a]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="bfd0520b-d29e-453a-a1fa-b3a25cb06af0" x="292" y="378" width="197" height="14"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{vacaciones}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ad700216-a62a-4d6a-b916-96349adc76ea" x="480" y="294" width="92" height="30"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{contrato_relevo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c301d761-212a-4617-b70e-29dfb508fd62" x="215" y="522" width="160" height="24"/>
+				<textElement/>
+				<text><![CDATA[CLÁUSULAS ADICIONALES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="09009163-fe7f-498c-8924-c0ba1f95181a" x="17" y="274" width="174" height="18"/>
+				<textElement/>
+				<text><![CDATA[y se establece un período de prueba de  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b371b21f-0e6a-4cdf-9c37-fff8ec41d47b" x="26" y="657" width="153" height="17"/>
+				<textElement/>
+				<text><![CDATA[En San Sebastián de los Reyes]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="b7fb11e0-2276-4a14-8460-0f529e863696" x="249" y="193" width="128" height="18"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{pacto_horas}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="24070e02-7394-4d76-ab13-8015a8c98680" x="22" y="486" width="267" height="20"/>
+				<textElement/>
+				<text><![CDATA[en el plazo de los 10 días siguientes a su concertación    (11).]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="7c5452d6-f3c1-4fa4-9904-86097111a705" x="205" y="658" width="182" height="30"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{fecha_contrato}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c38e2d68-99f5-4467-91c2-c61395d29ab2" x="17" y="378" width="271" height="14"/>
+				<textElement/>
+				<text><![CDATA[SEPTIMA:     La duración de las vacaciones anuales será de ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="58631943-fff9-4096-9827-3346c43f5bdb" x="192" y="276" width="195" height="18"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{periodo_prueba}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="91cabf96-df72-4bf1-bf43-aab7b42488d0" x="14" y="332" width="265" height="20"/>
+				<textElement/>
+				<text><![CDATA[SEXTA:	El/la trabajador/a percibirá una retribución total de ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="11978f2e-528f-4902-8bab-1afdaf5f2137" x="15" y="294" width="464" height="18"/>
+				<textElement/>
+				<text><![CDATA[QUINTA:		El presente contrato se formaliza bajo la modalidad de contrato de  relevo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d4c05a90-02f5-48bf-b519-0cd4d103dd5b" x="16" y="358" width="273" height="14"/>
+				<textElement/>
+				<text><![CDATA[que se distribuiran en los siguientes conceptos salariales ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ff8e8b36-7ad3-432c-b2fa-7298bcacdf77" x="10" y="55" width="209" height="18"/>
+				<textElement/>
+				<text><![CDATA[La  distribución del  tiempo de  trabajo será de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="047b35e2-8b9f-4896-be39-d143c0d0a25d" x="22" y="614" width="562" height="30"/>
+				<textElement/>
+				<text><![CDATA[Y para que conste, se extiende este contrato por triplicado ejemplar en el lugar y fecha a continuación indicados, firmando las partes interesadas.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="524280d4-8b95-4182-8639-30c48fb4e0bd" x="250" y="137" width="127" height="19"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{corresponde_contrato}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4b1a114f-946f-4de6-bb06-7b48132b78a4" x="10" y="101" width="574" height="30"/>
+				<textElement/>
+				<text><![CDATA[Señálese, en el caso de jornada a tiempo parcial, si el contrato corresponde o no, a la realización de trabajos fijos discontínuos y periódicos  que se repiten en fechas ciertas dentro del volumen normal de actividad de la empresa.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="77b5b07f-4fc5-4beb-ae25-afc8b1a1b868" x="11" y="161" width="558" height="30"/>
+				<textElement/>
+				<text><![CDATA[TERCERA: En el caso de jornada a tiempo parcial señalese si existe o no pacto sobre la realización de horas complementarias (6):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6c24f3a6-8d78-4c3e-bdf0-4dad35e9b436" x="135" y="312" width="343" height="20"/>
+				<textElement/>
+				<text><![CDATA[En caso afirmativo cumplimentar el anexo «Contrato de   relevo».]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="7bfd38a9-5162-4a85-a0ed-244058ea7aef" x="409" y="4" width="209" height="58"/>
+				<imageExpression><![CDATA["C:\\logonomina.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="2b046c9e-d610-4778-8339-9468bb97d229" x="364" y="212" width="208" height="20"/>
+				<textElement/>
+				<text><![CDATA[, iniciándonse la relación laboral en fecha]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="83d8c6bf-3cbc-4beb-a40f-0abe40a2b374" x="249" y="212" width="113" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{Dtipo_contrato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="15d280a6-04b2-4603-9a1d-d1fadbe99c5b" x="121" y="241" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{fecha_fin}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rprecios" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="18eb5d2f-ef9c-415f-8b51-8d869e4b1322">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Intranet"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idsubpro" class="java.lang.Integer"/>
+	<parameter name="idsubcapi" class="java.lang.Integer"/>
+	<parameter name="idsubsubcapi" class="java.lang.Integer"/>
+	<parameter name="desc" class="java.lang.Float">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT p.id, p.subcapitulo_id,sc.nombre,p.descripcion,p.cantidad,''||sc.cantidad as precio,''||trunc(CAST ((p.monto-(p.monto*$P{desc}))AS numeric),2) as monto
+FROM presupuesto p INNER JOIN subcapitulos sc on(p.subcapitulo_id=sc.id) INNER JOIN presupuestoc pre on(p.presup_id=pre.id)
+where pre.propuesta_id=  $P{idsubpro} and pre.capitulo_id=  $P{idsubcapi} and p.subcapitulo_id= $P{idsubsubcapi}]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="subcapitulo_id" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="cantidad" class="java.math.BigDecimal"/>
+	<field name="precio" class="java.lang.String"/>
+	<field name="monto" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement uuid="37f6d919-60b4-49f0-8fed-e5dc3d68943d" x="467" y="1" width="48" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="32879281-b9fd-4020-8ec8-a2ddadcbe9ec" x="527" y="1" width="57" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{monto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b7ef50e5-72b9-4a42-bced-0bbf962142ac" x="401" y="1" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement uuid="267717ca-1ba5-4038-9fb2-e64f6616d550" x="515" y="3" width="11" height="16"/>
+				<imageExpression><![CDATA["C:\\DecorakiaReportesIntranet\\euro.png"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

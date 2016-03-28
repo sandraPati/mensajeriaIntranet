@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
+<!-- 2015-10-17T23:41:51 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RHContrato" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9f80cc19-302a-448d-af05-ca0d3e262873">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="conexionIntranet"/>
+	<parameter name="to_char" class="java.lang.String"/>
+	<parameter name="nif" class="java.lang.String"/>
+	<parameter name="nombres" class="java.lang.String"/>
+	<parameter name="domicilio" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT e.nif,e.nombre||' '||e.apellidos as nombres,e.direccion||' ('||e.poblacion||') '||e.pais||'/'||' '||e.provincia as domicilio,to_char(fecha_contrato_desde, 'DD Mon YYYY')
+  FROM empleados e  INNER JOIN contrato c on(e.nif=c.nif_empleado)
+  where e.nif='5704988E']]>
+	</queryString>
+	<field name="nif" class="java.lang.String"/>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="domicilio" class="java.lang.String"/>
+	<field name="to_char" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="801" splitType="Stretch">
+			<staticText>
+				<reportElement x="181" y="111" width="90" height="16" uuid="185efde5-1430-4895-b062-e91d8f9e18f0"/>
+				<text><![CDATA[. Y provisto de NIF ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="211" width="220" height="20" uuid="6dfadbd6-7cc1-4423-9b47-12eff825df85"/>
+				<text><![CDATA[EL SEGUNDO, en nombre y representación de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="0" width="60" height="20" uuid="0c542e73-d304-4187-b76b-ace0ed7e245a"/>
+				<text><![CDATA[En Madrid,  a  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="381" y="211" width="165" height="20" uuid="ff04bfc5-d1a1-4ff6-b351-11095bc33cca"/>
+				<text><![CDATA[como empleado de DECORAKIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="113" width="21" height="20" uuid="48698184-713b-4a48-84ac-527abb0f1627"/>
+				<text><![CDATA[en]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="71" width="525" height="24" uuid="3a7919c6-844a-4beb-bde2-8e3ccec47bc7"/>
+				<text><![CDATA[Nueva 12..San Sebastián de los Reyes 28703. y provisto del Documento Nacional de Identidad nº 53005868E]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="142" width="525" height="39" uuid="e504150b-582f-46e4-8cdb-b3913a0b7f67"/>
+				<text><![CDATA[I N T E R V I E N E N.-
+
+EL PRIMERO, en nombre y representación de la Sociedad  DECORAKIA PROYECTOS SL, con domicilio social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="184" width="526" height="16" uuid="836e7037-ec72-42eb-afa8-6dbd9d708a47"/>
+				<text><![CDATA[en San Sebastián de los Reyes, Av Fuente Nueva 12 y provista del CIF. nº B12935466.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="227" width="270" height="20" uuid="e9c1d3cd-3898-4ff0-8a32-9d1a9be50912"/>
+				<text><![CDATA[PROYECTOS SL conforme a contrato de trabajo  fechado el]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="96" width="100" height="19" uuid="07cc28f6-6ca4-48f0-b75d-819c68b71cde"/>
+				<text><![CDATA[Y DE OTRA PARTE, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="30" width="525" height="50" uuid="f82ca080-fb4c-4090-b6b0-e29927ec238f"/>
+				<text><![CDATA[R E U N I D O S.-
+
+DE UNA PARTE, Don Jonatan Fajardo Ruano, mayor de edad, con domicilio profesional en Avenida  Fuente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="96" width="150" height="20" uuid="7eba1672-84e5-47a1-b7d2-29c8a3febe65"/>
+				<text><![CDATA[, mayor de edad, con domicilio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="252" width="523" height="20" uuid="83c25cc9-fdc1-44ea-953a-609e62633d4c"/>
+				<text><![CDATA[Ambas partes se reconocen capacidad legal suficiente para suscribir el presente documento a cuyo  fin,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="282" width="369" height="39" uuid="1abf86b1-eba1-4275-887d-c8c4ebca14a2"/>
+				<text><![CDATA[E X P O N E N.-
+
+Ambas partes se proponen colaborar conforme a la relación descrita desde el día]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="308" width="96" height="16" uuid="89c8cc83-58cb-4179-b540-d6632af9bac0"/>
+				<text><![CDATA[, en proyectos de ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="322" width="320" height="17" uuid="3853f76e-3c4f-4e6d-849b-eb186c62c656"/>
+				<text><![CDATA[rehabilitación, reparación y reformas de viviendas y oficinas. Teniendo ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="338" width="520" height="30" uuid="b6ddce42-b969-4af7-a501-8a38b4ecc5d9"/>
+				<text><![CDATA[información de carácter confidencial para  DECORAKIA PROYECTOS SL. De diferentes cuestiones relacionadas con clientes, proveedores, entidades financieras y cualquier entidad objeto y vinculada a la actividad propia descrita.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="382" width="524" height="332" uuid="fd52c193-b8ec-446c-8c74-50c4b76c4a80"/>
+				<text><![CDATA[ACUERDAN.-
+
+PRIMERO: CLAUSULA DE  CONFIDENCIALIDAD
+El empleado durante ella duración de contrato de trabajo referido así como hasta dos años después desde la rescisión del mismo, se obliga a:
+	-       No contratar o contactar de manera directa o indirecta  por motivos profesionales ni en beneficio suyo ni en el de terceros con clientes, personal que hayan contratado o prestado sus servicios previamente con empresas administradas por Jonatan Fajardo Ruano  DECORAKIA PROYECTOS SL.
+	-       No prestar sus servicios a clientes de las empresas arriba mencionadas sin consentimiento de D Jonatan Fajardo Ruano.
+El Empleado  reconoce el KNOW HOW(“Saber-Cómo”) de las empresas administradas por D. Jonatan Fajardo Ruano  y se obliga con carácter indefinido a guardar el secreto y la confidencialidad de toda la información de la que haya tenido acceso durante la vigencia del contrato de colaboración, especialmente  la información  relativa a sus protocolos de trabajo , relaciones con sus  los proveedores, documentación propia ,información jurídica, proyectos futuros o cualquier otra información sensible o propia de la empresa o vinculada a la actividad de la misma.
+El Empleado no podrá aprovechar en su beneficio ni en el de terceros ningún tipo de información o contactos a los que haya tenido acceso por mediación de las empresas de D. Jonatan Fajardo Ruano  sin consentimiento de este.
+El Empleado será responsable de todos los daños y perjuicios que para la empresa  referida se derive como consecuencia  del  incumplimiento de dicha obligación.
+Independientemente de las responsabilidades que pudieran derivarse del incumplimiento del presente acuerdo,así como las eventuales indemnizaciones por daños y perjuicios de cualquier naturaleza que pudieran establecerse,el incumplimiento de estas obligaciones determinará la extinción de forma procedente el contrato de trabajo suscrito entre ambas partes  así como el abono por parte del trabajador de 50000€ en concepto de penalización.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="714" width="140" height="16" uuid="6f708741-3bc3-42f3-9c88-9ca06ec2b6d8"/>
+				<text><![CDATA[D. Jonatan Fajardo Ruano]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="714" width="30" height="16" uuid="d0a178dc-e511-4c20-a1f8-d6b6b95c666d"/>
+				<text><![CDATA[Fdo.:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="281" y="111" width="100" height="30" uuid="2fccf827-9806-4e38-8a06-0b84870edb2d"/>
+				<textFieldExpression><![CDATA[$P{nif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="96" width="207" height="19" uuid="f88a3f93-6148-4709-a109-1ef0a344258b"/>
+				<textFieldExpression><![CDATA[$P{nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="91" y="0" width="100" height="20" uuid="83d5f1ed-3559-4a26-a0ca-a89d0244ca45"/>
+				<textFieldExpression><![CDATA[$P{to_char}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="46" y="113" width="135" height="17" uuid="9a35e011-61fa-4470-a402-2d0fa09e9fb3"/>
+				<textFieldExpression><![CDATA[$P{domicilio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="241" y="211" width="140" height="17" uuid="bcded37a-b226-41bb-9258-66103a5f8d2c"/>
+				<textFieldExpression><![CDATA[$P{nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="227" width="100" height="19" uuid="434696c7-621b-497f-be1f-e57cd9ad156f"/>
+				<textFieldExpression><![CDATA[$P{to_char}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="308" width="60" height="14" uuid="f7035068-b78f-4ac7-ba2e-98cbd59d58ab"/>
+				<textFieldExpression><![CDATA[$P{to_char}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="323" width="200" height="15" uuid="6cfb66e1-cd1b-4534-8c0e-d6823be858e1"/>
+				<textFieldExpression><![CDATA[$P{nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="714" width="171" height="16" uuid="05d56770-dbff-4e27-8628-3b1db8bdb61b"/>
+				<textFieldExpression><![CDATA[$P{nombres}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="21" y="740" width="139" height="47" uuid="a0036670-57dc-412e-b14b-5ad9b7075f3b"/>
+				<imageExpression><![CDATA["C:\\firma.png"]]></imageExpression>
+			</image>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

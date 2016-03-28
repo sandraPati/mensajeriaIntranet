@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="plansubcap" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1d78b59e-5632-4b03-8468-33961dc8f96b">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="conexionIntranet"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="capitulo_id" class="java.lang.Integer"/>
+	<parameter name="propuesta_id" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[ SELECT distinct p.subcapitulo_id,c.nombre,c.cod,p.id as presupuesto_id,pp.id as proypresup_id,pp.num_trabajadores, pp.numhoras
+  FROM proyecto_presupuesto pp inner join presupuesto p on(pp.id_presupuesto=p.id) inner join presupuestoc pre on(p.presup_id=pre.id) inner join subcapitulos c on(p.subcapitulo_id=c.id)
+  where pre.propuesta_id= $P{propuesta_id} and pre.capitulo_id= $P{capitulo_id}]]>
+	</queryString>
+	<field name="subcapitulo_id" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="cod" class="java.lang.String"/>
+	<field name="presupuesto_id" class="java.lang.Integer"/>
+	<field name="proypresup_id" class="java.lang.Integer"/>
+	<field name="num_trabajadores" class="java.lang.Integer"/>
+	<field name="numhoras" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement uuid="5675514b-9067-46d0-b614-638a1a530ad7" x="21" y="1" width="59" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{cod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6e8b332d-1be7-4e89-8990-9bf0b896b20a" x="80" y="1" width="341" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement uuid="f57ab0a5-00fb-4a40-b4f7-8e7ff46ae802" x="-20" y="44" width="595" height="17"/>
+				<subreportParameter name="proypresup_id">
+					<subreportParameterExpression><![CDATA[$F{proypresup_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="id_proyecto_presupuesto">
+					<subreportParameterExpression><![CDATA[$F{proypresup_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["C:/DecorakiaReportesIntranet/proyecto/planObra/planproypresup.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement uuid="654f29b4-db6b-472b-840f-eeba4235c51f" x="424" y="1" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{num_trabajadores}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8b5a8c8e-c786-48bb-93f9-7692a146f426" x="483" y="1" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{numhoras}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2ac8ab7e-df96-4eba-8b18-b4b202599cfd" x="61" y="21" width="222" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMPLEADOS ASIGNADOS]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a12045bf-e1cf-448a-8f81-a35b3f6d149c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="nif" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="idC" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT e.nif,e.nombre||' '||e.apellidos as nombres,e.direccion||' '||e.poblacion||' '||e.provincia||' ('||e.pais||')' as domicilio,to_char(fecha_contrato_desde, 'DD Mon YYYY') 
+FROM empleados e  INNER JOIN contrato c on(e.nif=c.nif_empleado)   
+where e.nif=$P{nif} and c.id=$P{idC}]]>
+	</queryString>
+	<field name="nif" class="java.lang.String"/>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="domicilio" class="java.lang.String"/>
+	<field name="to_char" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="d0a178dc-e511-4c20-a1f8-d6b6b95c666d" x="270" y="724" width="30" height="16"/>
+				<textElement/>
+				<text><![CDATA[Fdo.:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="3a171205-f1f6-47fe-976b-f4866309cdc6" x="83" y="10" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{to_char}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1abf86b1-eba1-4275-887d-c8c4ebca14a2" x="11" y="292" width="369" height="39"/>
+				<textElement/>
+				<text><![CDATA[E X P O N E N.-
+
+Ambas partes se proponen colaborar conforme a la relación descrita desde el día]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f1e70e61-0d42-4fb6-a24d-7451825446bc" x="114" y="106" width="207" height="19"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="45cedb89-7bbf-4d58-ac81-446fad68bf27" x="281" y="237" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{to_char}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="48698184-713b-4a48-84ac-527abb0f1627" x="11" y="121" width="21" height="20"/>
+				<textElement/>
+				<text><![CDATA[en]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="bd078401-5857-47df-b5de-b2d0fab110a5" x="330" y="332" width="200" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="07cc28f6-6ca4-48f0-b75d-819c68b71cde" x="11" y="106" width="100" height="19"/>
+				<textElement/>
+				<text><![CDATA[Y DE OTRA PARTE, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e504150b-582f-46e4-8cdb-b3913a0b7f67" x="10" y="152" width="525" height="39"/>
+				<textElement/>
+				<text><![CDATA[I N T E R V I E N E N.-
+
+EL PRIMERO, en nombre y representación de la Sociedad  DECORAKIA PROYECTOS SL, con domicilio social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ff04bfc5-d1a1-4ff6-b351-11095bc33cca" x="371" y="221" width="165" height="20"/>
+				<textElement/>
+				<text><![CDATA[como empleado de DECORAKIA]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="12112b60-589f-4e73-9f61-60a8d3fec06e" x="36" y="121" width="135" height="19"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{domicilio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b6ddce42-b969-4af7-a501-8a38b4ecc5d9" x="10" y="348" width="520" height="30"/>
+				<textElement/>
+				<text><![CDATA[información de carácter confidencial para  DECORAKIA PROYECTOS SL. De diferentes cuestiones relacionadas con clientes, proveedores, entidades financieras y cualquier entidad objeto y vinculada a la actividad propia descrita.]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="a0036670-57dc-412e-b14b-5ad9b7075f3b" x="11" y="750" width="139" height="47"/>
+				<imageExpression><![CDATA["C:\\firma.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="89c8cc83-58cb-4179-b540-d6632af9bac0" x="440" y="318" width="96" height="16"/>
+				<textElement/>
+				<text><![CDATA[, en proyectos de ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="7646b3f1-ff25-4974-bfe0-14137f451278" x="300" y="724" width="230" height="36"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6dfadbd6-7cc1-4423-9b47-12eff825df85" x="11" y="221" width="220" height="20"/>
+				<textElement/>
+				<text><![CDATA[EL SEGUNDO, en nombre y representación de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e9c1d3cd-3898-4ff0-8a32-9d1a9be50912" x="11" y="237" width="270" height="20"/>
+				<textElement/>
+				<text><![CDATA[PROYECTOS SL conforme a contrato de trabajo  fechado el]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0c542e73-d304-4187-b76b-ace0ed7e245a" x="11" y="10" width="60" height="20"/>
+				<textElement/>
+				<text><![CDATA[En Madrid,  a  ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="5877fd98-ad50-4820-a9fe-f73f4325c303" x="270" y="121" width="153" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nif}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="fd52c193-b8ec-446c-8c74-50c4b76c4a80" x="10" y="392" width="524" height="332"/>
+				<textElement/>
+				<text><![CDATA[ACUERDAN.-
+
+PRIMERO: CLAUSULA DE  CONFIDENCIALIDAD
+El empleado durante ella duración de contrato de trabajo referido así como hasta dos años después desde la rescisión del mismo, se obliga a:
+	-       No contratar o contactar de manera directa o indirecta  por motivos profesionales ni en beneficio suyo ni en el de terceros con clientes, personal que hayan contratado o prestado sus servicios previamente con empresas administradas por Jonatan Fajardo Ruano  DECORAKIA PROYECTOS SL.
+	-       No prestar sus servicios a clientes de las empresas arriba mencionadas sin consentimiento de D Jonatan Fajardo Ruano.
+El Empleado  reconoce el KNOW HOW(“Saber-Cómo”) de las empresas administradas por D. Jonatan Fajardo Ruano  y se obliga con carácter indefinido a guardar el secreto y la confidencialidad de toda la información de la que haya tenido acceso durante la vigencia del contrato de colaboración, especialmente  la información  relativa a sus protocolos de trabajo , relaciones con sus  los proveedores, documentación propia ,información jurídica, proyectos futuros o cualquier otra información sensible o propia de la empresa o vinculada a la actividad de la misma.
+El Empleado no podrá aprovechar en su beneficio ni en el de terceros ningún tipo de información o contactos a los que haya tenido acceso por mediación de las empresas de D. Jonatan Fajardo Ruano  sin consentimiento de este.
+El Empleado será responsable de todos los daños y perjuicios que para la empresa  referida se derive como consecuencia  del  incumplimiento de dicha obligación.
+Independientemente de las responsabilidades que pudieran derivarse del incumplimiento del presente acuerdo,así como las eventuales indemnizaciones por daños y perjuicios de cualquier naturaleza que pudieran establecerse,el incumplimiento de estas obligaciones determinará la extinción de forma procedente el contrato de trabajo suscrito entre ambas partes  así como el abono por parte del trabajador de 50000€ en concepto de penalización.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="185efde5-1430-4895-b062-e91d8f9e18f0" x="171" y="121" width="90" height="16"/>
+				<textElement/>
+				<text><![CDATA[. Y provisto de NIF ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83c25cc9-fdc1-44ea-953a-609e62633d4c" x="11" y="262" width="523" height="20"/>
+				<textElement/>
+				<text><![CDATA[Ambas partes se reconocen capacidad legal suficiente para suscribir el presente documento a cuyo  fin,]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="77df64d0-bb31-4b47-a98b-95d71b8623c3" x="232" y="221" width="140" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ea549036-a957-46fd-b0ba-6226b75b02f1" x="381" y="313" width="59" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{to_char}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f82ca080-fb4c-4090-b6b0-e29927ec238f" x="10" y="40" width="525" height="50"/>
+				<textElement/>
+				<text><![CDATA[R E U N I D O S.-
+
+DE UNA PARTE, Don Jonatan Fajardo Ruano, mayor de edad, con domicilio profesional en Avenida  Fuente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3853f76e-3c4f-4e6d-849b-eb186c62c656" x="10" y="332" width="320" height="17"/>
+				<textElement/>
+				<text><![CDATA[rehabilitación, reparación y reformas de viviendas y oficinas. Teniendo ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7eba1672-84e5-47a1-b7d2-29c8a3febe65" x="321" y="106" width="150" height="20"/>
+				<textElement/>
+				<text><![CDATA[, mayor de edad, con domicilio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3a7919c6-844a-4beb-bde2-8e3ccec47bc7" x="10" y="81" width="525" height="24"/>
+				<textElement/>
+				<text><![CDATA[Nueva 12..San Sebastián de los Reyes 28703. y provisto del Documento Nacional de Identidad nº 53005868E]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="836e7037-ec72-42eb-afa8-6dbd9d708a47" x="10" y="194" width="526" height="16"/>
+				<textElement/>
+				<text><![CDATA[en San Sebastián de los Reyes, Av Fuente Nueva 12 y provista del CIF. nº B12935466.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6f708741-3bc3-42f3-9c88-9ca06ec2b6d8" x="10" y="724" width="140" height="16"/>
+				<textElement/>
+				<text><![CDATA[D. Jonatan Fajardo Ruano]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="7bfd38a9-5162-4a85-a0ed-244058ea7aef" x="398" y="-10" width="209" height="58"/>
+				<imageExpression><![CDATA["C:\\logonomina.png"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

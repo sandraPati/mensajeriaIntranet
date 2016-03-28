@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5d5ba8a0-a251-4af6-aa2a-28dfafe3c776">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="452"/>
+	<parameter name="idpropuesta" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="desc" class="java.lang.Float">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\DecorakiaReportesIntranet\\propuestas\\presupuestoD\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT ''||trunc(CAST ((sum(p.monto)-(sum(p.monto)*$P{desc}))AS numeric),2) as sum
+FROM presupuesto p INNER JOIN presupuestoc pre on(p.presup_id=pre.id) INNER JOIN capitulos c on(pre.capitulo_id=c.id)
+where pre.propuesta_id=$P{idpropuesta}]]>
+	</queryString>
+	<field name="sum" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="750" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="65a0fbfb-a243-4988-ada0-70c02831b361" x="-14" y="18" width="180" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRESUPUESTO Y MEDICIONES]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="4d9dde94-e8d3-477e-b52a-5f18c2a15371" x="397" y="50" width="158" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a31e7210-106a-4010-8df0-bf6be86540b0" x="287" y="50" width="85" height="20"/>
+				<textElement>
+					<font isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[IMPORTE TOTAL: ]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="64c22b22-8fd5-4034-a1ad-9bcd921f5a69" x="447" y="10" width="180" height="40"/>
+				<imageExpression><![CDATA["C://logonomina.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="293bbd29-4f0b-4f2a-99d0-91a760a54873" x="-14" y="38" width="90" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[base DECORAKIA]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="361dc255-b234-4b53-9301-d6189b12d381" x="381" y="49" width="16" height="20"/>
+				<imageExpression><![CDATA["C:\\DecorakiaReportesIntranet\\euro.png"]]></imageExpression>
+			</image>
+			<subreport>
+				<reportElement uuid="915f6711-8359-4384-97a4-bd614b664bd1" x="-17" y="83" width="592" height="618"/>
+				<subreportParameter name="idpropuesta">
+					<subreportParameterExpression><![CDATA[$P{idpropuesta}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR"/>
+				<subreportParameter name="desc">
+					<subreportParameterExpression><![CDATA[$P{desc}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["C:\\DecorakiaReportesIntranet\\propuestas\\presupuestoD\\Principal.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

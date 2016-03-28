@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subpropuesto" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="79376270-e3e6-47ee-9850-933e80823560">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="conexionIntranet"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idsubpro" class="java.lang.Integer"/>
+	<parameter name="idsubcapi" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT p.id, p.subcapitulo_id,sc.cod,sc.nombre,sc.nota,p.descripcion,p.cantidad,p.precio,p.monto
+FROM presupuesto p INNER JOIN subcapitulos sc on(p.subcapitulo_id=sc.id) INNER JOIN presupuestoc pre on(p.presup_id=pre.id)
+where pre.propuesta_id= $P{idsubpro} and pre.capitulo_id= $P{idsubcapi}
+order by sc.cod]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="subcapitulo_id" class="java.lang.Integer"/>
+	<field name="cod" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="nota" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="cantidad" class="java.math.BigDecimal"/>
+	<field name="precio" class="java.math.BigDecimal"/>
+	<field name="monto" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="119" splitType="Stretch">
+			<textField>
+				<reportElement uuid="665f85bc-ee8f-4d49-8144-3bebb377b8f3" x="31" y="-13" width="372" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ec036cba-7ecf-4663-8b71-af61c45418c9" x="-14" y="7" width="417" height="89"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nota}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement uuid="63098aa9-2133-43b4-b1d7-07980fe99dd2" x="-7" y="100" width="595" height="19"/>
+				<subreportParameter name="idpresupuesto">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="idsubpro">
+					<subreportParameterExpression><![CDATA[$P{idsubpro}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="idsubcapi">
+					<subreportParameterExpression><![CDATA[$P{idsubcapi}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["C:/DecorakiaReportesIntranet/propuestas/presupuesto/subsubreporte.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement uuid="4ba7f768-b0c3-4a6b-90bd-36d61a7e5ed3" x="-20" y="-30" width="608" height="22"/>
+				<subreportParameter name="idsubpro">
+					<subreportParameterExpression><![CDATA[$P{idsubpro}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="idsubcapi">
+					<subreportParameterExpression><![CDATA[$P{idsubcapi}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="idsubsubcapi">
+					<subreportParameterExpression><![CDATA[$F{subcapitulo_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["C:/DecorakiaReportesIntranet/propuestas/presupuesto/rprecios.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement uuid="54fea1c1-5c62-4fe3-aeff-14d46302e866" x="-20" y="-29" width="608" height="20"/>
+				<textElement/>
+				<text><![CDATA[________________________________________________________________________________________________________________________]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="418550ff-a4c4-4391-9504-a7caff0a40d3" x="-14" y="-13" width="34" height="21"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{cod}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

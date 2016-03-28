@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
+<!-- 2015-10-14T23:33:39 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="certificacionescapsub" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="830cb2e0-c4e5-4d01-b75f-6cda05c1f3de">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="conexionIntranet"/>
+	<parameter name="id_proyecto_presupuesto" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT id, id_proyecto_presupuesto, porcentaje_terminado, monto_semana,fecha,numsemana 
+FROM proyecto_certificaciones  
+where id_proyecto_presupuesto=  $P{id_proyecto_presupuesto}]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="id_proyecto_presupuesto" class="java.lang.Integer"/>
+	<field name="porcentaje_terminado" class="java.lang.Integer"/>
+	<field name="monto_semana" class="java.math.BigDecimal"/>
+	<field name="fecha" class="java.sql.Date"/>
+	<field name="numsemana" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<textField>
+				<reportElement x="474" y="0" width="100" height="17" uuid="b89eee8b-dbc7-4d0e-ac75-1c5a4a5682d7"/>
+				<textFieldExpression><![CDATA[$F{monto_semana}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="259" y="0" width="131" height="17" uuid="91da56db-7e27-4fe7-ac0f-e6c6a9e3e6f0"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="224" y="0" width="35" height="17" uuid="55f112f2-0f44-4b89-b6a4-a3e873e05c48"/>
+				<textFieldExpression><![CDATA[$F{numsemana}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="422" y="0" width="13" height="17" uuid="8e1d9332-1e0a-4bc1-af2e-61b5ea331579"/>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="392" y="0" width="30" height="17" uuid="86f74187-8cba-459b-9b59-0c289d515960"/>
+				<textFieldExpression><![CDATA[$F{porcentaje_terminado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="179" y="0" width="45" height="17" uuid="97c8ebee-0dde-4702-a7a4-fdf5336a7a73"/>
+				<text><![CDATA[Semana]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

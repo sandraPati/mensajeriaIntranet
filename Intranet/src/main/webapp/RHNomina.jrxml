@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RHNomina" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e127405d-c96f-4d8e-b6fb-7566713b99e5">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="conexionIntranet"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="nif" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cont" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nomi" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT e.nif,e.nombre||' '||e.apellidos as nombres, 
+	e.numero_afiliacionss as nss,c.categoria_profesional as cp,n.mes||' - '||n.anio  as periodo,n.antiguedad , 
+	n.numdias as dias, 
+	n.salario_base, 
+	n.pagas_extras_prorrateadas as pep, 
+	n.prorrateo_vacaciones as pv, 
+	n.horas_extraordinarias as he, 
+	n.gratificaciones_extraordinarias as ge, 
+	n.salario_especie, 
+	n.indemnizaciones_suplidos as isup, 
+	n.prestaciones_indemnizaciones_ss as piss, 
+	n.otras_percepciones_no_salariales as opns, 
+	(n.salario_base+ 
+	n.pagas_extras_prorrateadas+ 
+	n.prorrateo_vacaciones+  
+	n.horas_extraordinarias+ 
+	n.gratificaciones_extraordinarias+ 
+	n.salario_especie+ 
+	n.indemnizaciones_suplidos + 
+	n.prestaciones_indemnizaciones_ss + 
+	n.otras_percepciones_no_salariales)as total_devengado, 
+	d.contingencias_comunes as cm, 
+	d.desempleo, 
+	d.formacion, 
+	d.irpf, 
+	d.anticipos, 
+	d.valor_productos_recibidos as vpr, 
+	d.otras_deducciones, 
+	(d.contingencias_comunes+ 
+	d.desempleo+ 
+	d.formacion+ 
+	d.irpf+ 
+	d.anticipos+ 
+	d.valor_productos_recibidos+ 
+	d.otras_deducciones)as total_deducciones, 
+	((n.salario_base+ 
+	n.pagas_extras_prorrateadas+ 
+	n.prorrateo_vacaciones+ 
+	n.gratificaciones_extraordinarias+ 
+	n.salario_especie+ 
+	n.indemnizaciones_suplidos + 
+	n.prestaciones_indemnizaciones_ss + 
+	n.otras_percepciones_no_salariales)-(d.contingencias_comunes+ 
+	d.desempleo+ 
+	d.formacion+ 
+	d.irpf+ 
+	d.anticipos+ 
+	d.valor_productos_recibidos+ 
+	d.otras_deducciones))as liquido,nivel_profesional nivp,d.basecotizacion,d.baseirpf  
+	FROM empleados e  INNER JOIN contrato c on(e.nif=c.nif_empleado)  
+	INNER JOIN nomina n on(e.nif=n.nif_empleado) 
+	INNER JOIN deducciones d on(e.nif=d.nif_empleado) 
+	where e.nif=$P{nif} and c.id=$P{cont} and n.id=$P{nomi} and d.nomina_id=$P{nomi}]]>
+	</queryString>
+	<field name="nif" class="java.lang.String"/>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="nss" class="java.lang.String"/>
+	<field name="cp" class="java.lang.String"/>
+	<field name="periodo" class="java.lang.String"/>
+	<field name="antiguedad" class="java.lang.String"/>
+	<field name="dias" class="java.lang.String"/>
+	<field name="salario_base" class="java.math.BigDecimal"/>
+	<field name="pep" class="java.math.BigDecimal"/>
+	<field name="pv" class="java.math.BigDecimal"/>
+	<field name="he" class="java.math.BigDecimal"/>
+	<field name="ge" class="java.math.BigDecimal"/>
+	<field name="salario_especie" class="java.math.BigDecimal"/>
+	<field name="isup" class="java.math.BigDecimal"/>
+	<field name="piss" class="java.math.BigDecimal"/>
+	<field name="opns" class="java.math.BigDecimal"/>
+	<field name="total_devengado" class="java.math.BigDecimal"/>
+	<field name="cm" class="java.math.BigDecimal"/>
+	<field name="desempleo" class="java.math.BigDecimal"/>
+	<field name="formacion" class="java.math.BigDecimal"/>
+	<field name="irpf" class="java.math.BigDecimal"/>
+	<field name="anticipos" class="java.math.BigDecimal"/>
+	<field name="vpr" class="java.math.BigDecimal"/>
+	<field name="otras_deducciones" class="java.math.BigDecimal"/>
+	<field name="total_deducciones" class="java.math.BigDecimal"/>
+	<field name="liquido" class="java.math.BigDecimal"/>
+	<field name="nivp" class="java.lang.String"/>
+	<field name="basecotizacion" class="java.math.BigDecimal"/>
+	<field name="baseirpf" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="802" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="cf8b6f39-8d59-48da-8c3a-d2be1f48fdcb" x="0" y="717" width="403" height="20"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Y DE LA BASE SUJETA A RETENCIÓN DE IRPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e5293748-b1e8-4fd9-a538-fa2e3327d768" x="45" y="581" width="110" height="20"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL DEDUCCIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bfaea7f5-f3db-4d9c-a2e5-a62c37c193c2" x="44" y="290" width="140" height="20"/>
+				<textElement/>
+				<text><![CDATA[Salario especie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5093ed27-ba0d-4c69-8b30-c82a3d74a01f" x="321" y="102" width="149" height="15"/>
+				<textElement/>
+				<text><![CDATA[CATEGORIA          NIVEL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="874541d3-19a2-44c1-ae68-9820b8d039d7" x="3" y="309" width="181" height="20"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[2.	Percepciones no salariales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d89bd2a1-cf83-4aff-8acb-7a05939ae98e" x="6" y="442" width="318" height="20"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[1.	Aportaciones del trabajador a las cotizaciones de la SS y recaudación conjunta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3954039a-898c-48d9-bf23-2377729d6de5" x="43" y="329" width="131" height="20"/>
+				<textElement/>
+				<text><![CDATA[Indemnizaciones y suplidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8167eac2-eee8-4021-834b-6a1b0b74972e" x="4" y="82" width="320" height="20"/>
+				<textElement/>
+				<text><![CDATA[DOMICILIO: FUENTE NUEVA 12 SAN SEBASTIAN REYES (28700)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="477cc8ea-ae4c-411b-a3e0-856e11049f50" x="4" y="190" width="160" height="20"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[1.	Percepciones salariales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0235bd85-9607-4d0e-b5b1-dc2aa035877e" x="46" y="473" width="148" height="20"/>
+				<textElement/>
+				<text><![CDATA[DESEMPLEO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc1c5488-6919-4b39-913a-9b073ab6adf0" x="44" y="680" width="171" height="20"/>
+				<textElement/>
+				<text><![CDATA[FIRMA Y SELLO DE LA EMPRESA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="448d788b-afb4-4c74-9002-317d172411b4" x="2" y="758" width="401" height="20"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[2.	Base sujeta a IRPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="861e0304-9cd2-4007-b976-8565b16ef3c0" x="321" y="50" width="78" height="20"/>
+				<textElement/>
+				<text><![CDATA[TRABAJADOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="82226210-2321-4fdf-a2df-3ffd2791e024" x="45" y="230" width="109" height="20"/>
+				<textElement/>
+				<text><![CDATA[Paga extra prorrateada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="279969ce-6518-45eb-8d6c-30e0487a3436" x="6" y="543" width="258" height="20"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[4.	Valor de los productos recibidos en especie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bbfe4b42-6e16-4b21-a4fb-1759b57eece1" x="3" y="738" width="401" height="20"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[1.	Base de cotización de contingencias comunes (mes+ prorrata pagas extra)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2ee7139c-7526-4833-885e-f2dabf86906d" x="5" y="117" width="160" height="20"/>
+				<textElement/>
+				<text><![CDATA[B12935466: 12/110381490]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="02568013-4ed0-4c38-b405-938403172e7b" x="44" y="349" width="190" height="20"/>
+				<textElement/>
+				<text><![CDATA[Prestaciones o indemnizaciones de la SS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b602b279-db7a-43ac-9963-a74b5f800ef6" x="6" y="507" width="78" height="20"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[2.	IRPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5b1bb524-756e-419a-ac0c-35048b128140" x="4" y="100" width="160" height="16"/>
+				<textElement/>
+				<text><![CDATA[CIF: CCC SEGURIDAD SOCIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0234b679-4515-4e08-80e5-3e6544b368f7" x="47" y="490" width="109" height="20"/>
+				<textElement/>
+				<text><![CDATA[FORMACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="184828af-23b6-4ea5-8910-e5585208f3cb" x="45" y="600" width="159" height="20"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[LIQUIDO TOTAL A PERCIBIR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6d97bc4a-f38d-4e99-9e1d-f3b7473d8318" x="7" y="422" width="77" height="20"/>
+				<textElement/>
+				<text><![CDATA[DEDUCCIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="80da1cc4-46f7-4792-939f-dc6d14492292" x="44" y="210" width="60" height="20"/>
+				<textElement/>
+				<text><![CDATA[Salario base]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e84999da-b6e9-4538-9605-73e341a811cc" x="5" y="135" width="49" height="19"/>
+				<textElement/>
+				<text><![CDATA[PERIODO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5e457a97-fe1f-4cfd-8a58-246f9104df94" x="44" y="369" width="150" height="20"/>
+				<textElement/>
+				<text><![CDATA[Otras percepciones no salariales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a0608fc6-7c04-431d-be24-ce0ef99d7e81" x="5" y="170" width="59" height="20"/>
+				<textElement/>
+				<text><![CDATA[DEVENGOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cf7f42cb-efbe-4a67-9f50-094fd5f3cfae" x="4" y="50" width="211" height="20"/>
+				<textElement/>
+				<text><![CDATA[EMPRESA: DECORAKIA PROYECTOS SL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="73458008-3983-4aea-9582-db205120c416" x="44" y="388" width="110" height="20"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL DEVENGADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f51e9b7e-48b9-4d26-8c2f-4830e94de441" x="320" y="137" width="50" height="17"/>
+				<textElement/>
+				<text><![CDATA[DIAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="aabcfa38-9cf1-4b70-b776-b890b0174dac" x="394" y="66" width="180" height="20"/>
+				<textElement/>
+				<text><![CDATA[N° AFILIACION SEGURIDAD SOCIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b092757d-d126-4ab0-91b7-a3f56b5ced71" x="1" y="702" width="403" height="20"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DETERMINACION DE LA BASE DE COTIZACIÓN Y CONCEPTOS DE RECAUDACION CONJUNTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e2027550-abb9-42fc-91fd-1dbe32545436" x="44" y="270" width="140" height="20"/>
+				<textElement/>
+				<text><![CDATA[Gratificaciones extraordinarias]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c8e3a1b9-3c87-4610-80c9-54e5bbced222" x="46" y="455" width="148" height="20"/>
+				<textElement/>
+				<text><![CDATA[CONTINGENCIAS COMUNES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0037a65b-e521-463d-8516-4f9ec13c855f" x="6" y="525" width="108" height="20"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[3.	Anticipos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9d43bb87-ab36-4e04-a706-ea310fc9e1bd" x="321" y="66" width="78" height="20"/>
+				<textElement/>
+				<text><![CDATA[NIF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d5d0c33d-f197-4f87-8cd6-5d7c0b9c7806" x="6" y="561" width="78" height="20"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[5.	Otras deducciones]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3632b9f5-960d-4c94-97bd-fc662e967b75" x="45" y="250" width="109" height="20"/>
+				<textElement/>
+				<text><![CDATA[Horas extraordinarias]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f4e82e71-7903-427e-8c0d-cf50f2ef3335" x="328" y="82" width="100" height="17"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="552622e9-01a9-4a3b-a5a3-5a657f075a54" x="400" y="50" width="156" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1633c25c-883f-4eeb-a957-8a93ed08bb41" x="395" y="84" width="100" height="16"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nss}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="689451ae-948b-4fb1-a65d-24be31b5e815" x="320" y="117" width="80" height="17"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{cp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e331c8cd-d137-4579-9e0f-960ce0d2f3fd" x="392" y="140" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dias}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f7dcbc70-85da-475c-822e-604806de9384" x="56" y="135" width="100" height="19"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{periodo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="049eb68b-318d-4965-9983-b4748192ad86" x="395" y="210" width="100" height="21"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{salario_base}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d43c481c-b4b4-4fc7-a7c3-42ed2c7f770b" x="394" y="231" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pep}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6d2a3fc8-52e5-4e75-8960-749d575a7d0d" x="394" y="251" width="100" height="19"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{he}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0547b334-899b-495c-9531-e6e6a3fd1dad" x="395" y="270" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ge}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ee8b5fcf-1e59-48f1-92ae-7c0775c49159" x="394" y="290" width="100" height="19"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{salario_especie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="19887baa-59a0-4912-85b1-f2398ede3dbb" x="395" y="329" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{isup}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2fea8261-7de3-4058-a60f-fb6a90a1aa6b" x="395" y="349" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{piss}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="78b873a8-546f-4cd2-95a1-1bb88a5459d9" x="395" y="369" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{opns}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e6ebd51d-5290-48df-b154-4309d9b73f40" x="395" y="388" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{total_devengado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d2a3177b-c6da-4f2c-aee0-baa8b5864d53" x="395" y="455" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{cm}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="69776c8f-2fdd-4649-9cfe-5d618fc78ba7" x="394" y="473" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{desempleo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f8c72aa4-8e28-4592-a28c-8840da55c4b7" x="395" y="490" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{formacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="92e398a8-3174-4627-8376-aa27eebba963" x="395" y="507" width="100" height="18"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{irpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8a84d7b7-f393-4c7f-942f-66fe35a031f0" x="395" y="525" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{anticipos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a75c9f75-b625-4a9c-a135-88545ea381ee" x="395" y="543" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{vpr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c7a10e93-39a4-489c-8058-9063098d71c2" x="395" y="563" width="100" height="30"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{otras_deducciones}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="541f5187-44bf-40fc-8301-c7a90be3bc35" x="395" y="581" width="100" height="30"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{total_deducciones}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1b5d1aed-4d32-4adf-b0f8-d3130400bc39" x="395" y="601" width="100" height="19"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{liquido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fa273723-3af8-4f41-b69b-65e118761b3c" x="407" y="118" width="85" height="16"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nivp}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement uuid="461b37f6-c685-469d-b9f4-ff829119be6a" x="54" y="630" width="141" height="50"/>
+				<imageExpression><![CDATA["C://firmacontrato.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement uuid="2341f835-8a6b-4d2d-bfb7-f0b5dc7ef5cb" x="322" y="0" width="160" height="44"/>
+				<imageExpression><![CDATA["C://logonomina.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="85f4089a-83f3-43c8-8dcd-26fd9fe5b585" x="495" y="102" width="67" height="16"/>
+				<textElement/>
+				<text><![CDATA[ANTIGUEDAD]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="841908f0-a76b-4d8b-85ea-228ddcbbf105" x="495" y="118" width="67" height="36"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{antiguedad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="399055f4-7973-4814-abcf-c6235bb25617" x="404" y="738" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{basecotizacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f04b2754-3a8c-48af-92c3-fdc17161f223" x="404" y="757" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{baseirpf}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

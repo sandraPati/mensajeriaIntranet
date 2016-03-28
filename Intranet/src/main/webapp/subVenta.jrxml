@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8bb07034-9163-4ddc-a644-03c25594386b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="rectificativo" class="java.lang.String"/>
+	<parameter name="causaRec" class="java.lang.String"/>
+	<parameter name="numP" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT serie, cliente_nif, fecha, fechavencimiento, referencia, direccionp, 
+       direccione, rectificativa, causa, notas, terminos, estado, baseimponible, 
+       ivatotal, irpf, totalirpf, total, propuesta_id, num
+  FROM venta where num=$P{numP}]]>
+	</queryString>
+	<field name="serie" class="java.lang.String"/>
+	<field name="cliente_nif" class="java.lang.String"/>
+	<field name="fecha" class="java.sql.Date"/>
+	<field name="fechavencimiento" class="java.sql.Date"/>
+	<field name="referencia" class="java.lang.String"/>
+	<field name="direccionp" class="java.lang.String"/>
+	<field name="direccione" class="java.lang.String"/>
+	<field name="rectificativa" class="java.lang.Boolean"/>
+	<field name="causa" class="java.lang.String"/>
+	<field name="notas" class="java.lang.String"/>
+	<field name="terminos" class="java.lang.String"/>
+	<field name="estado" class="java.lang.Integer"/>
+	<field name="baseimponible" class="java.math.BigDecimal"/>
+	<field name="ivatotal" class="java.math.BigDecimal"/>
+	<field name="irpf" class="java.math.BigDecimal"/>
+	<field name="totalirpf" class="java.math.BigDecimal"/>
+	<field name="total" class="java.math.BigDecimal"/>
+	<field name="propuesta_id" class="java.lang.Integer"/>
+	<field name="num" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="274" splitType="Stretch">
+			<textField>
+				<reportElement uuid="ede18bb4-7684-4c5a-9444-b71ae133a216" x="251" y="104" width="312" height="45"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{causaRec}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d57ab2f1-c243-43a9-a2fa-fb9b45103225" x="10" y="158" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Notas]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="140eeba1-2a67-4557-8f23-65c27d4885ef" x="474" y="43" width="91" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{totalirpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e9b8bf38-03ca-47fe-8d75-637359d9afdb" x="301" y="178" width="264" height="96"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{terminos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b4146f15-d91a-46ee-8c9c-7e879fd7078a" x="346" y="23" width="86" height="20"/>
+				<textElement/>
+				<text><![CDATA[IVA Total:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="7f674845-0b45-45ae-87f0-d60148c6b46e" x="10" y="178" width="258" height="96"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{notas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e5503367-2be0-431b-8b8b-eafaf14cb168" x="432" y="3" width="133" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{baseimponible}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1a231951-e485-4898-bc99-e163fd8cc956" x="346" y="63" width="29" height="20"/>
+				<textElement/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="36c8085a-33d4-4471-ac7d-a2427763a1b7" x="432" y="63" width="133" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="51274698-e9fa-4990-91ba-e1ec5e5d4bb8" x="346" y="3" width="86" height="20"/>
+				<textElement/>
+				<text><![CDATA[Base Imponible:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ccced026-577a-4c82-8bc4-de3485e45834" x="21" y="104" width="141" height="20"/>
+				<textElement/>
+				<text><![CDATA[Es una factura Rectificativa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7940ea70-8a1a-43c4-95be-1ad6556aae49" x="302" y="158" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Terminos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bf51491d-531f-4b12-a851-3a2f3f550dda" x="21" y="84" width="141" height="20" forecolor="#009966"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Facturas Rectificativas]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="82f15c3f-ce90-4541-8d67-51750b52bcd1" x="432" y="43" width="42" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{irpf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f1e5200d-3219-4f3a-9c25-7e19443e89e3" x="346" y="43" width="86" height="20"/>
+				<textElement/>
+				<text><![CDATA[Porcentaje IRPF]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="22ed7f24-e62f-4b60-b869-431a0d00ca69" x="432" y="23" width="133" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ivatotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="640bd13c-b124-4424-a020-35fe53b0cfde" x="169" y="104" width="47" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{rectificativo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
